@@ -5,35 +5,191 @@
 \renewcommand*{\backref}[1]{[#1]}
 \usepackage{graphicx}
 \usepackage{enumerate}
+\usepackage{amsmath,amssymb}
 \usepackage{bm}
 \usepackage{color}
 \usepackage[utf8]{inputenc}
 
 \usepackage[normalem]{ulem}
-\newcommand{\kgsins}[1]{\textcolor{blue}{#1}}
-\newcommand{\kgsdel}[1]{\textcolor{red}{\sout{#1}}}
 
-\newcommand{\teff}{T_{\rm eff}}
-\newcommand{\logg}{\log g}
 \newcommand{\radmc}{\texttt{RADMC-3D}}
-\newcommand{\kms}{\textrm{km~s}^{-1}}
-\newcommand{\todo}[1]{\textcolor{red}{#1}}
+\newcommand{\kms}{ \textrm{km s}^{-1} }
+\newcommand{\todo}[1]{ \textcolor{red}{#1}}
 \newcommand{\vt}{ {\bm \theta}}
-\newcommand{\msun}{M_\odot}
+\newcommand{\msun}{M$_\odot$}
 
-
+\shorttitle{SMA Dynamical Masses}
+\shortauthors{Ian Czekala}
 
 \begin{document}
 
-\title{SMA archival disk survey}
-\author{Ian Czekala}
+\title{SMA Dynamical Masses}
+\author{I.~Czekala\altaffilmark{1}, S.~M.~Andrews\altaffilmark{1}, et al.}
+\altaffiltext{1}{Harvard-Smithsonian Center for Astrophysics,
+			 60 Garden Street, Cambridge, MA 02138; \email{iczekala@cfa.harvard.edu}}
 
 \begin{abstract}
-Abstract...
+Goes here.
 \end{abstract}
+
 
 \section{Introduction}
 
-Hi.
+Dynamical masses for all the SMA data.
+
+\section{Data and Reduction}
+
+SMA programs from which all the data was taken.
+
+Calibration.
+
+\section{Methodology}
+
+We use the dynamical mass technique described in \citet{czekala15a}.
+
+Inclination convention. Position angle convention. Notes on geometrical prior.
+
+\section{Results}
+
+\capstartfalse
+\begin{deluxetable*}{lcccc}
+ \tablecaption{\label{table:targets}Targets}
+  \tablehead{\colhead{{Source}} & \colhead{R.A.} & \colhead{DEC} & \colhead{SPT} & \colhead{Ref}}
+ \startdata
+LkH$\alpha$ 330 & 03:45:48.28 & +32:24:11.9 & G1--G5 & \\
+UX Tau A         & 04:30:04.00 & +18:13:49.4 & K1--K5 & \\
+DM Tau          & 04:33:48.72 & +18:10:09.9 & K7--M2 & \\
+AA Tau          & 04:34:55.42 & +24:28:53.2 & K6--M1 & \\
+LkCa 15         & 04:39:17.80 & +22:21:03.5 & K3--K7 & \\
+GM Aur          & 04:55:10.98 & +30:21:59.5 & K2--K5 & \\
+MWC 480         & 04:58:46.26 & +29:50:37.1 & A2--A8 & \\
+MWC 758         & 05:30:27.53 & +25:19:57.1 & A5--F0 & \\
+CQ Tau          & 05:35:58.46 & +24:44:54.2 & F2--F6 & \\
+TW Hya          & 11:01:51.91 & -34:42:17.0 & K6--M3 & \\
+SAO 206462      & 15:15:48.44 & -37:09:16.0 &  F6--G0 & \\
+IM Lup          & 15:56:09.18 & -37:56:06.1 & K7--M2 &  \\
+HD 142527       & 15:56:41.89 & -42:19:23.3 & F2--G0 & \\
+RX J1604.3-2130 & 16:04:21.66 & -21:30:28.4 & K0--K3 & \\
+RX J1615.3-3255 & 16:15:20.23 & -32:55:05.1 & K4--K7 & \\
+RX J1633.9-2442 & 16:33:55.61 & -24:42:05.0 & K5--M0 & \\
+AS 209          & 16:49:15.30 & -14:22:08.6 & K3--K6 & \\
+HD 163296       & 17:56:21.29 & -21:57:21.9 & A0--A4 & \\
+HD 169142       & 18:24:29.78 & -29:46:49.4 & B8--A2 & \\
+ \enddata
+ \tablecomments{References are for spectral type. These are all single stars.}
+\end{deluxetable*}
+\capstarttrue
+
+\capstartfalse
+\begin{deluxetable*}{lcccccccccc}
+ \tablecaption{\label{table:masses}Inferred Stellar Properties}
+  \tablehead{\colhead{{Source}} & \colhead{$M_\ast$} & \colhead{$i_d$} & \colhead{$r_c$} & \colhead{$\log_{10} M_\textrm{CO}$} & \colhead{$T_{10}$} & \colhead{$q$} & \colhead{$\xi$} & \colhead{P.A.} &  \colhead{$d$} & \colhead{$M_\ast / d$} \\
+	& \colhead{[$M_\odot$]} & \colhead{[${}^\circ$]} & \colhead{[AU]} & \colhead{[$M_\odot$]} & \colhead{[K]} & & \colhead{ [$\kms$]} & \colhead{[${}^\circ$]} & \colhead{[pc]} & \colhead{$[M_\odot / \textrm{pc}]$}}
+ \startdata
+LkH$\alpha$ 330 &  \\
+UX Tau A         &\\
+DM Tau          & \\
+AA Tau          & \\
+LkCa 15         & \\
+GM Aur          & \\
+MWC 480         & \\
+MWC 758         & \\
+CQ Tau          & \\
+TW Hya          & \\
+SAO 206462      & \\
+IM Lup          & \\
+HD 142527       & \\
+RX J1604.3-2130 & \\
+RX J1615.3-3255 & \\
+RX J1633.9-2442 & \\
+AS 209          & \\
+HD 163296       & \\
+HD 169142       & \\
+ \enddata
+ \tablecomments{Dynamical masses.}
+\end{deluxetable*}
+\capstarttrue
+
+
+\section{Conclusions}
+
+We present the largest compilation of dynamical mass measurements. We find that the pre-main sequence models (do not) work for X, Y, and Z.
+
+\acknowledgments
+IC is supported by the NSF Graduate Fellowship and the Smithsonian Institution. \todo{SA acknowledges XX}. \todo{SMA observers of this data?}  Figures \todo{XX} were generated with \texttt{triangle.py} \citep{foreman-mackey14}. This research made extensive use of the Julia programming language \citep{julia12} and Astropy \citep{astropy13}.
+
+\bibliographystyle{apj}
+\bibliography{master.bib}
+
+\appendix
+
+\section{Remarks on individual sources}
+
+\subsection{LkH$\alpha$ 330}
+
+
+\subsection{UX Tau A}
+
+\subsection{DM Tau}
+Previous measurements.
+
+\subsection{AA Tau}
+
+\subsection{LkCa 15}
+Previous measurements. Transition disk.
+
+\citep{vandermarel15} notes PA = 60 deg, i = 55 deg,  vsrc=6.1.
+
+\subsection{GM Aur}
+Previous measurements.
+
+\subsection{MWC 480}
+
+\subsection{MWC 758}
+
+\subsection{CQ Tau}
+
+\subsection{TW Hya}
+
+\subsection{SAO 206462}
+
+\subsection{IM Lup}
+
+\subsection{HD 142527}
+
+\subsection{RX J1604.3-2130}
+\citep{vandermarel15} notes that this is viewed almost face-on (Mathews 12, Zhang 14). PA = 80, i = 10, vsrc = 4.7 km/s.
+
+Dahm 08, Mathews 12, Carpenter 14
+
+$M = 1.0 M_\odot$.
+Spt = K2
+d = 145 pc
+
+Dust shadowing by an inner disk. A ``double drop'' going on at two radii.
+
+Gas density drop at 30 AU.
+
+\subsection{RX J1615.3-3255}
+\citep{vandermarel15} derives PA = 153, i = 45, vsrc = 4.6 km/s. Says no dust cavity visible. Andrews 11 has cavity of 30 AU.
+
+Large range of permissible CO densities inside gap before CO makes optically thick-thin transition.
+
+\citep{andrews11}
+Wichmann et al 1997
+
+Spt = K5
+
+$M = 1.1 M_\odot$.
+d = 185 pc.
+
+\subsection{RX J1633.9-2442}
+
+\subsection{AS 209}
+
+\subsection{HD 163296}
+
+\subsection{HD 169142}
+
 
 \end{document}
