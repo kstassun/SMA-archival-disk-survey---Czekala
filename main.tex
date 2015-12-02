@@ -1,13 +1,36 @@
-\documentclass{article}
+\documentclass[iop,floatfix,numberedappendix,twocolappendix]{emulateapj}
+
+\usepackage[backref,breaklinks,colorlinks,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage[all]{hypcap}
+\renewcommand*{\backref}[1]{[#1]}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{color}
 \usepackage[utf8]{inputenc}
 
-\title{SMA archival disk survey}
-\author{Ian Czekala}
-%\date{December 2015}
+\usepackage[normalem]{ulem}
+\newcommand{\kgsins}[1]{\textcolor{blue}{#1}}
+\newcommand{\kgsdel}[1]{\textcolor{red}{\sout{#1}}}
+
+\newcommand{\teff}{T_{\rm eff}}
+\newcommand{\logg}{\log g}
+\newcommand{\radmc}{\texttt{RADMC-3D}}
+\newcommand{\kms}{\textrm{km~s}^{-1}}
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+\newcommand{\vt}{ {\bm \theta}}
+\newcommand{\msun}{M_\odot}
+
+
 
 \begin{document}
 
-%\maketitle
+\title{SMA archival disk survey}
+\author{Ian Czekala}
+
+\begin{abstract}
+Abstract...
+\end{abstract}
 
 \section{Introduction}
 
