@@ -24,18 +24,24 @@
 \begin{document}
 
 \title{SMA Dynamical Masses}
-\author{I.~Czekala\altaffilmark{1}, S.~M.~Andrews\altaffilmark{1}, et al.}
+\author{I.~Czekala\altaffilmark{1}, S.~M.~Andrews\altaffilmark{1}, D.~J.~Wilner\altaffilmark{1}, K.~G.~Stassun\altaffilmark{3,4}, et al.}
 \altaffiltext{1}{Harvard-Smithsonian Center for Astrophysics,
 			 60 Garden Street, Cambridge, MA 02138; \email{iczekala@cfa.harvard.edu}}
+\altaffiltext{2}{Department of Physics and Astronomy, Swarthmore College, 500 College Avenue, Swarthmore, PA 19081}
+\altaffiltext{3}{Department of Physics and Astronomy, Vanderbilt University, Nashville, TN 37235}
+\altaffiltext{4}{Department of Physics, Fisk University, Nashville, TN 37208}
+
 
 \begin{abstract}
-Abstract text.
+We present a survey of precision mass measurements of a sample of 20 pre-main sequence Herbig Ae/Be and T Tauri stars. We use resolved observations with the Submillimeter Array of the Keplerian rotation of CO gas to make a precise, \emph{dynamical} mass measurement of a sample of \emph{single} stars.
 \end{abstract}
 
 
 \section{Introduction}
 
-Dynamical masses for all the SMA data.
+Dynamical masses for all the SMA data. These sources have long been studied and are important to have accurate measurements.
+
+Other important compilations include Hillenbrand and White, Guilloteau, Simon, Dutrey.
 
 \section{Data and Reduction}
 
@@ -43,13 +49,7 @@ SMA programs from which all the data was taken.
 
 Calibration.
 
-\section{Methodology}
-
-We use the dynamical mass technique described in \citet{czekala15a}.
-
-Inclination convention. Position angle convention. Notes on geometrical prior.
-
-\section{Results}
+Sources are listed in Table~\ref{table:targets}.
 
 \capstartfalse
 \begin{deluxetable*}{lcccc}
@@ -76,9 +76,22 @@ AS 209          & 16:49:15.30 & -14:22:08.6 & K3--K6 & \\
 HD 163296       & 17:56:21.29 & -21:57:21.9 & A0--A4 & \\
 HD 169142       & 18:24:29.78 & -29:46:49.4 & B8--A2 & \\
  \enddata
- \tablecomments{References are for spectral type. These are all single stars.}
+ \tablecomments{References are for spectral type.}
 \end{deluxetable*}
 \capstarttrue
+
+
+\section{Methodology}
+
+We use the dynamical mass technique described in \citet{czekala15a}.
+
+Inclination convention. Position angle convention. Notes on geometrical prior.
+
+\section{Results}
+
+We present our results in Table~\ref{table:masses}.
+
+% I think an interesting figure for this section would be to plot a representative set of PMS tracks (Dartmouth), then plot the existing disk-based sources in transparent blue, plot the existing eclipsing binary sources in transparent red, then plot our updated disk based measurements in a bold blue. Below, we will have a histogram showing where these have been filled in.
 
 \capstartfalse
 \begin{deluxetable*}{lcccccccccc}
@@ -113,7 +126,9 @@ HD 169142       & \\
 
 \section{Conclusions}
 
-We present the largest compilation of dynamical mass measurements. We find that the pre-main sequence models (do not) work for X, Y, and Z.
+We present the largest compilation of disk-based dynamical mass measurements to date. 
+
+We find that the pre-main sequence models (do not) work for X, Y, and Z.
 
 \acknowledgments
 IC is supported by the NSF Graduate Fellowship and the Smithsonian Institution. \todo{SA acknowledges XX}. \todo{SMA observers of this data?}  Figures \todo{XX} were generated with \texttt{triangle.py} \citep{foreman-mackey14}. This research made extensive use of the Julia programming language \citep{julia12} and Astropy \citep{astropy13}.
