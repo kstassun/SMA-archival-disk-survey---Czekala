@@ -1,16 +1,8 @@
-\documentclass[iop,floatfix,numberedappendix,twocolappendix]{emulateapj}
+% \documentclass[iop,floatfix,numberedappendix,twocolappendix]{emulateapj}
+\documentclass[twocolumn]{aastex6}
 
-\usepackage[backref,breaklinks,colorlinks,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
-\usepackage[all]{hypcap}
-\renewcommand*{\backref}[1]{[#1]}
-\usepackage{graphicx}
-\usepackage{enumerate}
-\usepackage{amsmath,amssymb}
-\usepackage{bm}
-\usepackage{color}
-\usepackage[utf8]{inputenc}
+% \usepackage[backref,breaklinks,colorlinks,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
 
-\usepackage[normalem]{ulem}
 
 \newcommand{\radmc}{\texttt{RADMC-3D}}
 \newcommand{\kms}{ \textrm{km s}^{-1} }
@@ -24,7 +16,7 @@
 \begin{document}
 
 \title{SMA Dynamical Masses}
-\author{I.~Czekala\altaffilmark{1}, S.~M.~Andrews\altaffilmark{1}, D.~J.~Wilner\altaffilmark{1}, K.~G.~Stassun\altaffilmark{3,4}, et al.}
+\author{I.~Czekala\altaffilmark{1}, S.~M.~Andrews\altaffilmark{1}, D.~J.~Wilner\altaffilmark{1}, E.~L.~N.~Jensen\altaffilmark{2}, and K.~G.~Stassun\altaffilmark{3,4}}
 \altaffiltext{1}{Harvard-Smithsonian Center for Astrophysics,
 			 60 Garden Street, Cambridge, MA 02138; \email{iczekala@cfa.harvard.edu}}
 \altaffiltext{2}{Department of Physics and Astronomy, Swarthmore College, 500 College Avenue, Swarthmore, PA 19081}
@@ -51,7 +43,6 @@ Calibration.
 
 Sources are listed in Table~\ref{table:targets}.
 
-\capstartfalse
 \begin{deluxetable*}{lcccc}
  \tablecaption{\label{table:targets}Targets}
   \tablehead{\colhead{{Source}} & \colhead{R.A.} & \colhead{DEC} & \colhead{SPT} & \colhead{Ref}}
@@ -78,7 +69,6 @@ HD 169142       & 18:24:29.78 & -29:46:49.4 & B8--A2 & \\
  \enddata
  \tablecomments{References are for spectral type.}
 \end{deluxetable*}
-\capstarttrue
 
 
 \section{Methodology}
@@ -95,7 +85,6 @@ We present our results in Table~\ref{table:masses}.
 
 % I think an interesting figure for this section would be to plot a representative set of PMS tracks (Dartmouth), then plot the existing disk-based sources in transparent blue, plot the existing eclipsing binary sources in transparent red, then plot our updated disk based measurements in a bold blue. Below, we will have a histogram showing where these have been filled in.
 
-\capstartfalse
 \begin{deluxetable*}{lccccccccccccc}
  \tablecaption{\label{table:masses}Inferred System Properties}
   \tablehead{\colhead{{Source}} & \colhead{$M_\ast$} & \colhead{$i_d$} & \colhead{$r_c$} & \colhead{$r_\textrm{in}$} & \colhead{$r_\textrm{cav}$} & \colhead{$\log \delta$} & \colhead{$\log M_\textrm{CO}$} & \colhead{$T_{10}$} & \colhead{$q$} & \colhead{$\xi$} & \colhead{P.A.} &  \colhead{$d$} & \colhead{$M_\ast / d$} \\
@@ -123,7 +112,7 @@ HD 169142       & \\
  \enddata
  \tablecomments{Dynamical masses.}
 \end{deluxetable*}
-\capstarttrue
+
 
 % Source  	Data? HDF5?	Fit?	Chmaps?
 % LkHa 330 	Y 		N
@@ -144,7 +133,7 @@ HD 169142       & \\
 % RX J1633 	N
 % AS 209 		N
 % HD 163296 N
-% HD 169142 Y 		N 		
+% HD 169142 Y 		N
 
 
 \section{Conclusions}
