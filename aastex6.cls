@@ -10,7 +10,7 @@
 %%    These files are distributed
 %%    WITHOUT ANY WARRANTY; without even the implied warranty of
 %%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-%% 
+%%
 %% \CharacterTable
 %%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -28,8 +28,8 @@
 %%   Right brace   \}     Tilde         \~}%
 %%
 %%%     date            = "2016/01/4",
-%%%     author          = "Amy Hendrickson (mailto:amyh@texnology.com)" 
-%%%                            including 
+%%%     author          = "Amy Hendrickson (mailto:amyh@texnology.com)"
+%%%                            including
 %%%                       1) code from emulateapj.cls, version 01/23/15(marked below)
 %%%                            written by Alexey Vikhlinin, which relies on RevTeX4-1
 %%%                            for much functionality;
@@ -37,22 +37,22 @@
 %%%                       3) Original work by Amy Hendrickson (marked below) for
 %%%                       extensive table tools, including easy decimal entry and splitting
 %%%                       tables horizontally into 2 or 3 pieces, for tabular and deluxetable
-%%%                       environments; rotate tables; gridlines for use in positioning figures, 
+%%%                       environments; rotate tables; gridlines for use in positioning figures,
 %%%                       track changes.
 
 
 
-%%% This work may be distributed and/or modified under the 
-%%% conditions of the LaTeX Project Public License, either version 1.3c 
+%%% This work may be distributed and/or modified under the
+%%% conditions of the LaTeX Project Public License, either version 1.3c
 %%% of this license or (at your option) any later version.
 %%% The latest version of this license is in
 %%%  http://www.latex-project.org/lppl.txt
-%%% and version 1.3 or later is part of all distributions of LaTeX 
+%%% and version 1.3 or later is part of all distributions of LaTeX
 %%% version 2005/12/01 or later.
 %
 %%% This work has the LPPL maintenance status `maintained'.
 %
-%%% The Current Maintainer of this work is Greg Schwarz <greg.schwarz@aas.org> 
+%%% The Current Maintainer of this work is Greg Schwarz <greg.schwarz@aas.org>
 %%% This work consists of the file aastex.cls
 
 %%%     copyright       = "Copyright (C) 2016 American Astronomical Society
@@ -120,8 +120,8 @@ ORCID identifier and more, by Amy Hendrickson,%
 %   twocolumn	: a two column article. Probably not needed, but here just in case.
 %   onecolumn	: a one column article; default option.
 %   twocolappendix: make 2 column appendix
-%   onecolappendix: make 1 column appendix is the default. 
-%   astrosymb	: Loads Astrosymb font and define \astrocommands. 
+%   onecolappendix: make 1 column appendix is the default.
+%   astrosymb	: Loads Astrosymb font and define \astrocommands.
 %   tighten	: Makes baselineskip slightly smaller
 %   times	: uses times font instead of the default
 %   linenumbers	: turn on lineno package.
@@ -192,7 +192,7 @@ ORCID identifier and more, by Amy Hendrickson,%
 
 %% End AH Options
 
-\ExecuteOptions{onecolumn,onecolappendix,numberedappendix}% 
+\ExecuteOptions{onecolumn,onecolappendix,numberedappendix}%
 
 \ProcessOptions
 
@@ -239,18 +239,18 @@ revtex4-1.cls^^J^^J}\stop
  \def\@eapj@figname{Figure}
  \def\@eapj@tabname{Table}
 
-% Restore natbib package without sorting. 
+% Restore natbib package without sorting.
 \def\NAT@sort{0}
 \def\NAT@cmprs{0}
 % only redefine sort@cites for natbib versions < 2009
 \@ifundefined{NAT@sort@cites@}{\def\NAT@sort@cites#1{\edef\NAT@cite@list{#1}}}%
 
-\RequirePackage{latexsym}% 
-\RequirePackage{graphicx}% 
-\RequirePackage{amssymb}% 
+\RequirePackage{latexsym}%
+\RequirePackage{graphicx}%
+\RequirePackage{amssymb}%
 
-\newcommand{\bibstyle@aas}{\bibpunct{(}{)}{;}{a}{}{,}}% 
-\@citestyle{aas}% 
+\newcommand{\bibstyle@aas}{\bibpunct{(}{)}{;}{a}{}{,}}%
+\@citestyle{aas}%
 
 \let\@startsection=\@startsection@from@latex
 \def\baselinestretch{1.0}
@@ -413,7 +413,7 @@ revtex4-1.cls^^J^^J}\stop
 \IfUnDef{BeforeBeg#1}\else\csname BeforeBeg#1\endcsname\fi%
 \IfUnDef{AfterBeg#1}% This is done to skip the command for environments
                      % which can take arguments, like multicols; YOU MUST NOT
-                     % USE \AfterBegin{...}{...} for such environments! 
+                     % USE \AfterBegin{...}{...} for such environments!
         \let\SaveBegEnd=\BeginEnvironment%
 \else
         % Start this environment
@@ -443,7 +443,7 @@ revtex4-1.cls^^J^^J}\stop
 %  *            PAGE LAYOUT               *
 %  ****************************************
 
-% Page size, spacing parameters, etc. 
+% Page size, spacing parameters, etc.
 
 \textwidth=7.1in
 \columnsep=0.3125in
@@ -612,7 +612,7 @@ revtex4-1.cls^^J^^J}\stop
  \everypar{\rightskip=0.5in\leftskip=\rightskip}\par
 }%
 
-% Redefine the LaTeX \and command for this style. 
+% Redefine the LaTeX \and command for this style.
 \def\and{\ifnum\AuthorCallLimit>0\else\xauthor{\vspace*{-0.2in}and\vspace*{-0.558cm}}\noaffiliation\fi}
 \def\@listand{\@ifnum{\@tempcnta=\tw@}{\andname\space}{}}%
 
@@ -668,7 +668,7 @@ revtex4-1.cls^^J^^J}\stop
 % Footnotes on the last page: user issues \lastpagefootnotes. It catches all
 % footnotes and issues them before \begin{refernces} or
 % \begin{\thebibliography} or \begin{appendix}, whichever comes first,
-% at the end of right column.  
+% at the end of right column.
 \newcounter{lastfootnote}
 \let\orig@footnote=\footnote
 %
@@ -730,7 +730,7 @@ revtex4-1.cls^^J^^J}\stop
       \let\footnotemark=\old@foot@note@mark
     \fi
     \@startsection{section}{1}{\z@}{9pt plus 2pt minus 1pt}{4pt}{\apjsecfont\center}}
-  
+
 \def\subsection{\@startsection{subsection}{2}{\z@}{9pt plus 1pt minus 1pt}{4pt}%
   {\normalsize\itshape \center}}
 
@@ -763,24 +763,24 @@ revtex4-1.cls^^J^^J}\stop
 \def\ApjSectionpenalty{0}
 
 \def\@sect#1#2#3#4#5#6[#7]#8%
-{\@tempskipa #5\relax 
+{\@tempskipa #5\relax
  \ifdim \@tempskipa >\z@ \begingroup
-     #6\relax 
-  \ifnum #2>\c@secnumdepth \def \@svsec {}\else 
-    \refstepcounter{#1} \edef \@svsec {\ApjSectionMarkInTitle 
+     #6\relax
+  \ifnum #2>\c@secnumdepth \def \@svsec {}\else
+    \refstepcounter{#1} \edef \@svsec {\ApjSectionMarkInTitle
     {\csname the#1\endcsname}}\fi
-  \@hangfrom {\hskip #3\relax 
+  \@hangfrom {\hskip #3\relax
     \ifnum #2=1{\secnum@size {\rm\@svsec~}}%
     \else {\subsecnum@size {\rm\@svsec~}}\fi }%
-  {\interlinepenalty \@M 
+  {\interlinepenalty \@M
    \ifnum #2=1\sec@upcase{#8}%
-   \else \subsec@upcase{#8}\fi\par}\endgroup 
+   \else \subsec@upcase{#8}\fi\par}\endgroup
   \csname #1mark\endcsname {#7}\addcontentsline{toc}{#1}%
-  {\ifnum #2>\c@secnumdepth \else \protect \numberline 
+  {\ifnum #2>\c@secnumdepth \else \protect \numberline
      {\csname the#1\endcsname }\fi #7}%
-  \else 
-  \ifnum #2>\c@secnumdepth \def \@svsec {}\else 
-    \refstepcounter{#1} \edef \@svsec {\ApjSectionMarkInTitle 
+  \else
+  \ifnum #2>\c@secnumdepth \def \@svsec {}\else
+    \refstepcounter{#1} \edef \@svsec {\ApjSectionMarkInTitle
     {\csname the#1\endcsname}}\fi
     \def \@svsechd {#6\hskip #3%
     \ifnum #2=1{\secnum@size{\rm\@svsec~}}\else{\subsecnum@size{\rm\@svsec~}}\fi%
@@ -790,7 +790,7 @@ revtex4-1.cls^^J^^J}\stop
       {\ifnum #2>\c@secnumdepth \else \protect \numberline {\csname
       the#1\endcsname }\fi #7}}\fi \@xsect {#5} \penalty \ApjSectionpenalty
 %-refstepcounter is now within a group. So \@currentlabel, which is normally
-%-set by \refstepcounter is hidden within a group. Need to set it manually. 
+%-set by \refstepcounter is hidden within a group. Need to set it manually.
 \protected@edef\@currentlabel{\csname p@#1\endcsname\csname the#1\endcsname}
 }
 
@@ -819,10 +819,10 @@ revtex4-1.cls^^J^^J}\stop
 \renewenvironment{appendix}[0]{
   \vspace*{0pt plus 20pt minus 5pt} % otherwise revtex4-1 sometimes eats
 % away the last line before appendix
-  \if@two@col 
+  \if@two@col
     \if@two@col@app\else
       \onecolumngrid
-    \fi 
+    \fi
   \fi
         \vskip 10pt plus 2pt minus 1pt
         \noindent\mbox{}\hfill{\apjsecfont APPENDIX}\hfill\mbox{}\par
@@ -848,7 +848,7 @@ revtex4-1.cls^^J^^J}\stop
 %
 % Do not use appendix numbers in the titles
           \def\ApjSectionMarkInTitle{\AppendixApjSectionMarkInTitle}
-          \def\section{\setcounter{equation}{0}\if@number@appendix@floats\setcounter{figure}{0}\setcounter{table}{0}\fi\@startsection {section}{1}{\z@} 
+          \def\section{\setcounter{equation}{0}\if@number@appendix@floats\setcounter{figure}{0}\setcounter{table}{0}\fi\@startsection {section}{1}{\z@}
             {10pt}{5pt}{\centering\scshape\apjsecfont}}
 %
 %
@@ -878,7 +878,7 @@ revtex4-1.cls^^J^^J}\stop
   \footnotesize \baselineskip=\baselinestretch\bibbaselineskip plus 1pt
   minus 1pt \interlinepenalty \@M
   \hyphenpenalty=10000
-  \frenchspacing    % AV - to get right spacing after ``et al.'' 
+  \frenchspacing    % AV - to get right spacing after ``et al.''
   \def\refpar{\par\hangindent=1.2em\hangafter=1}}
 {
   \onecolumngrid
@@ -894,7 +894,7 @@ revtex4-1.cls^^J^^J}\stop
 \renewenvironment{thebibliography}[1]{
  \vspace{12pt plus 3pt}
     \centerline{\normalsize REFERENCES}
-\twocolumngrid 
+\twocolumngrid
  \par
  \raggedright
  \vspace{10pt plus 3pt}
@@ -903,9 +903,9 @@ revtex4-1.cls^^J^^J}\stop
    {
      \parindent=0pt \parskip=1pt \parsep=0pt % AV
      \bibindent=0pt                          %
-    \footnotesize 
+    \footnotesize
 \baselineskip=10pt plus .01pt \interlinepenalty \@M  % AV
-     \frenchspacing    % AV - to get right spacing after ``et al.'' 
+     \frenchspacing    % AV - to get right spacing after ``et al.''
      \hyphenpenalty=10000
      \itemindent=-1.0em                      %
      \itemsep=0pt                            %
@@ -926,7 +926,7 @@ revtex4-1.cls^^J^^J}\stop
     \if@two@col \twocolumngrid \fi
   }
 
-% %% AV: 
+% %% AV:
 
 \def\reference{\@ifnextchar\bgroup {\@reference}
         {\@latexerr{Missing key on reference command}
@@ -980,7 +980,7 @@ revtex4-1.cls^^J^^J}\stop
 
 \setcounter{topnumber}{7}
 
-\setlength{\belowcaptionskip}{4pt}% 
+\setlength{\belowcaptionskip}{4pt}%
 \setlength{\abovecaptionskip}{5pt}
 
 \setlength{\textfloatsep}{-\baselinestretch\baselineskip}
@@ -1001,7 +1001,7 @@ revtex4-1.cls^^J^^J}\stop
 \setcounter{topnumber}{9}
 \setcounter{bottomnumber}{9}
 \setcounter{totalnumber}{20}
-\setcounter{dbltopnumber}{9} 
+\setcounter{dbltopnumber}{9}
 
 % Copied from revtex4.cls; without it, captions are centered
 \def\@xfloat@prep{%
@@ -1022,34 +1022,34 @@ revtex4-1.cls^^J^^J}\stop
 %% deluxetable.
 
 \def\@ptabularcr{\\}
-\newcommand\cutinhead[1]{% 
- \noalign{\vskip 1.5ex}% 
- \hline 
- \@ptabularcr 
- \noalign{\vskip -1.5ex}% 
- \multicolumn{\pt@ncol}{c}{#1}% 
- \@ptabularcr 
- \noalign{\vskip .8ex}% 
- \hline 
- \@ptabularcr 
- \noalign{\vskip -2ex}% 
-}% 
+\newcommand\cutinhead[1]{%
+ \noalign{\vskip 1.5ex}%
+ \hline
+ \@ptabularcr
+ \noalign{\vskip -1.5ex}%
+ \multicolumn{\pt@ncol}{c}{#1}%
+ \@ptabularcr
+ \noalign{\vskip .8ex}%
+ \hline
+ \@ptabularcr
+ \noalign{\vskip -2ex}%
+}%
 
-\newcommand\sidehead[1]{% 
- \noalign{\vskip 1.5ex}% 
-%  \hline 
-%  \@ptabularcr 
-%  \noalign{\vskip -1.5ex}% 
- \multicolumn{\pt@ncol}{l}{#1}% 
- \@ptabularcr 
- \noalign{\vskip .8ex}% 
-%  \hline 
-%  \@ptabularcr 
-%  \noalign{\vskip -2ex}% 
-}% 
+\newcommand\sidehead[1]{%
+ \noalign{\vskip 1.5ex}%
+%  \hline
+%  \@ptabularcr
+%  \noalign{\vskip -1.5ex}%
+ \multicolumn{\pt@ncol}{l}{#1}%
+ \@ptabularcr
+ \noalign{\vskip .8ex}%
+%  \hline
+%  \@ptabularcr
+%  \noalign{\vskip -2ex}%
+}%
 
 
-\newcommand\figcaption{\@testopt{\@xfigcaption}{}}% 
+\newcommand\figcaption{\@testopt{\@xfigcaption}{}}%
 %% suggested by Joern Wilms
 \def\@figcaption#1{{\def\@captype{figure}\caption{\footnotesize #1}}}
 \def\@xfigcaption[#1]#2{{\def\@captype{figure}\caption{\footnotesize #2}}}
@@ -1068,14 +1068,14 @@ revtex4-1.cls^^J^^J}\stop
 
  \let\fnum@ptable=\fnum@table
  \def\fnum@ptablecont{{\centering{\scshape Table~\thetable}---{\itshape
- Continued}}}% 
- \long\def\@make@caption@text#1#2{% 
+ Continued}}}%
+ \long\def\@make@caption@text#1#2{%
    {\small\centering#1{\scshape #2}\par\vskip1.4ex}
- }% 
+ }%
 
-\long\def\@makecaption@plano@cont#1#2{% 
+\long\def\@makecaption@plano@cont#1#2{%
   {\small \centering#1\par}\vskip1.4ex\relax
-}% 
+}%
 
 
 %% Commands from aastex.cls:
@@ -1092,73 +1092,73 @@ revtex4-1.cls^^J^^J}\stop
 
 \newcommand\object{\@testopt\@object{[}}%
 \def\@object[#1]#2{#2}%
-\newcommand\objectname{\@testopt\@objectname{[]}}% 
-\def\@objectname[#1]#2{#2}% 
+\newcommand\objectname{\@testopt\@objectname{[]}}%
+\def\@objectname[#1]#2{#2}%
 \newlength{\plot@width}
-\def\eps@scaling{1.0}% 
-\newcommand\epsscale[1]{\def\eps@scaling{#1}}% 
-\newcommand\plotone[1]{% 
- \centering 
- \leavevmode 
+\def\eps@scaling{1.0}%
+\newcommand\epsscale[1]{\def\eps@scaling{#1}}%
+\newcommand\plotone[1]{%
+ \centering
+ \leavevmode
  \setlength{\plot@width}{0.85\linewidth}
- \includegraphics[width={\eps@scaling\plot@width}]{#1}% 
-}% 
-\newcommand\plottwo[2]{% 
- \centering 
- \leavevmode 
+ \includegraphics[width={\eps@scaling\plot@width}]{#1}%
+}%
+\newcommand\plottwo[2]{%
+ \centering
+ \leavevmode
  \setlength{\plot@width}{0.425\linewidth}
- \includegraphics[width={\eps@scaling\plot@width}]{#1}% 
- \hfil 
- \includegraphics[width={\eps@scaling\plot@width}]{#2}% 
-}% 
-\newcommand\plotfiddle[7]{% 
- \centering 
- \leavevmode 
- \vbox\@to#2{\rule{\z@}{#2}}% 
- \includegraphics[% 
-  scale=#4, 
-  angle=#3, 
-  origin=c 
- ]{#1}% 
-}% 
-\newcommand\figurenum[1]{% 
- \def\thefigure{#1}% 
- \let\@currentlabel\thefigure 
- \addtocounter{figure}{\m@ne}% 
-}% 
+ \includegraphics[width={\eps@scaling\plot@width}]{#1}%
+ \hfil
+ \includegraphics[width={\eps@scaling\plot@width}]{#2}%
+}%
+\newcommand\plotfiddle[7]{%
+ \centering
+ \leavevmode
+ \vbox\@to#2{\rule{\z@}{#2}}%
+ \includegraphics[%
+  scale=#4,
+  angle=#3,
+  origin=c
+ ]{#1}%
+}%
+\newcommand\figurenum[1]{%
+ \def\thefigure{#1}%
+ \let\@currentlabel\thefigure
+ \addtocounter{figure}{\m@ne}%
+}%
 
-\newcommand\phn{\phantom{0}}% 
-\newcommand\phd{\phantom{.}}% 
-\newcommand\phs{\phantom{$-$}}% 
-\newcommand\phm[1]{\phantom{#1}}% 
-\let\la=\lesssim            % For Springer A&A compliance... 
-\let\ga=\gtrsim 
-\newcommand\sq{\mbox{\rlap{$\sqcap$}$\sqcup$}}% 
-\newcommand\arcdeg{\mbox{$^\circ$}}% 
-\newcommand\arcmin{\mbox{$^\prime$}}% 
-\newcommand\arcsec{\mbox{$^{\prime\prime}$}}% 
-\newcommand\fd{\mbox{$.\!\!^{\mathrm d}$}}% 
-\newcommand\fh{\mbox{$.\!\!^{\mathrm h}$}}% 
-\newcommand\fm{\mbox{$.\!\!^{\mathrm m}$}}% 
-\newcommand\fs{\mbox{$.\!\!^{\mathrm s}$}}% 
-\newcommand\fdg{\mbox{$.\!\!^\circ$}}% 
-\newcommand\farcm@mss{\mbox{$.\mkern-4mu^\prime$}}% 
-\let\farcm\farcm@mss 
-\newcommand\farcs@mss{\mbox{$.\!\!^{\prime\prime}$}}% 
-\let\farcs\farcs@mss 
-\newcommand\fp{\mbox{$.\!\!^{\scriptscriptstyle\mathrm p}$}}% 
-\newcommand\micron{\mbox{$\mu$m}}% 
-\def\farcm@apj{% 
- \mbox{.\kern -0.7ex\raisebox{.9ex}{\scriptsize$\prime$}}% 
-}% 
-\def\farcs@apj{% 
- \mbox{% 
-  \kern  0.13ex.% 
-  \kern -0.95ex\raisebox{.9ex}{\scriptsize$\prime\prime$}% 
-  \kern -0.1ex% 
- }% 
-}% 
- 
+\newcommand\phn{\phantom{0}}%
+\newcommand\phd{\phantom{.}}%
+\newcommand\phs{\phantom{$-$}}%
+\newcommand\phm[1]{\phantom{#1}}%
+\let\la=\lesssim            % For Springer A&A compliance...
+\let\ga=\gtrsim
+\newcommand\sq{\mbox{\rlap{$\sqcap$}$\sqcup$}}%
+\newcommand\arcdeg{\mbox{$^\circ$}}%
+\newcommand\arcmin{\mbox{$^\prime$}}%
+\newcommand\arcsec{\mbox{$^{\prime\prime}$}}%
+\newcommand\fd{\mbox{$.\!\!^{\mathrm d}$}}%
+\newcommand\fh{\mbox{$.\!\!^{\mathrm h}$}}%
+\newcommand\fm{\mbox{$.\!\!^{\mathrm m}$}}%
+\newcommand\fs{\mbox{$.\!\!^{\mathrm s}$}}%
+\newcommand\fdg{\mbox{$.\!\!^\circ$}}%
+\newcommand\farcm@mss{\mbox{$.\mkern-4mu^\prime$}}%
+\let\farcm\farcm@mss
+\newcommand\farcs@mss{\mbox{$.\!\!^{\prime\prime}$}}%
+\let\farcs\farcs@mss
+\newcommand\fp{\mbox{$.\!\!^{\scriptscriptstyle\mathrm p}$}}%
+\newcommand\micron{\mbox{$\mu$m}}%
+\def\farcm@apj{%
+ \mbox{.\kern -0.7ex\raisebox{.9ex}{\scriptsize$\prime$}}%
+}%
+\def\farcs@apj{%
+ \mbox{%
+  \kern  0.13ex.%
+  \kern -0.95ex\raisebox{.9ex}{\scriptsize$\prime\prime$}%
+  \kern -0.1ex%
+ }%
+}%
+
 
 \newcommand\ion[2]{#1$\;${%
 \ifx\@currsize\normalsize\small \else
@@ -1168,58 +1168,58 @@ revtex4-1.cls^^J^^J}\stop
 \ifx\@currsize\large\normalsize \else
 \ifx\@currsize\Large\large
 \fi\fi\fi\fi\fi\fi
-\rmfamily\@Roman{#2}}\relax}% 
+\rmfamily\@Roman{#2}}\relax}%
 
-\renewcommand\case[2]{\mbox{$\frac{#1}{#2}$}}% 
-\renewcommand\slantfrac{\case}% 
-\newcommand\onehalf{\slantfrac{1}{2}}% 
-\newcommand\onethird{\slantfrac{1}{3}}% 
-\newcommand\twothirds{\slantfrac{2}{3}}% 
-\newcommand\onequarter{\slantfrac{1}{4}}% 
-\newcommand\threequarters{\slantfrac{3}{4}}% 
-\newcommand\ubvr{\mbox{$U\!BV\!R$}}%% UBVR system 
-\newcommand\ub{\mbox{$U\!-\!B$}}%   % U-B 
-\newcommand\bv{\mbox{$B\!-\!V$}}%   % B-V 
-\renewcommand\vr{\mbox{$V\!-\!R$}}%   % V-R 
-\newcommand\ur{\mbox{$U\!-\!R$}}%   % U-R 
+\renewcommand\case[2]{\mbox{$\frac{#1}{#2}$}}%
+\renewcommand\slantfrac{\case}%
+\newcommand\onehalf{\slantfrac{1}{2}}%
+\newcommand\onethird{\slantfrac{1}{3}}%
+\newcommand\twothirds{\slantfrac{2}{3}}%
+\newcommand\onequarter{\slantfrac{1}{4}}%
+\newcommand\threequarters{\slantfrac{3}{4}}%
+\newcommand\ubvr{\mbox{$U\!BV\!R$}}%% UBVR system
+\newcommand\ub{\mbox{$U\!-\!B$}}%   % U-B
+\newcommand\bv{\mbox{$B\!-\!V$}}%   % B-V
+\renewcommand\vr{\mbox{$V\!-\!R$}}%   % V-R
+\newcommand\ur{\mbox{$U\!-\!R$}}%   % U-R
 
 %% need this change so that it works correctly in tables:
 {\catcode`\$=\active
-\gdef\nodata{ ~$\cdots$~ }}% 
+\gdef\nodata{ ~$\cdots$~ }}%
 
-\newcommand\diameter{\ooalign{\hfil/\hfil\crcr\mathhexbox20D}}% 
-\newcommand\degr{\arcdeg}% 
-\newcommand\Sun{\sun}% 
-\newcommand\Sol{\sun}% 
-\newcommand\sun{\odot}% 
-\newcommand\Mercury{\astro{\char1}}% Mercury symbol, "1" 
-\newcommand\Venus{\astro{\char2}}% Venus symbol, "2" 
-\newcommand\Earth{\earth}% 
-\newcommand\Terra{\earth}% 
-\newcommand\earth{\oplus}% 
-\newcommand\Mars{\astro{\char4}}% Mars symbol, "4" 
-\newcommand\Jupiter{\astro{\char5}}% Jupiter symbol, "5" 
-\newcommand\Saturn{\astro{\char6}}% Saturn symbol, "6" 
-\newcommand\Uranus{\astro{\char7}}% Uranus symbol, "7" 
-\newcommand\Neptune{\astro{\char8}}% Neptune symbol, "8" 
-\newcommand\Pluto{\astro{\char9}}% Pluo symbol, "9" 
-\newcommand\Moon{\astro{\char10}}% Moon symbol, "M" 
-\newcommand\Luna{\Moon}% 
-\newcommand\Aries{\astro{\char11}}% 
-\newcommand\VEq{\Aries}% vernal equinox (Aries) 
-\newcommand\Taurus{\astro{\char12}}% 
-\newcommand\Gemini{\astro{\char13}}% 
-\newcommand\Cancer{\astro{\char14}}% 
-\newcommand\Leo{\astro{\char15}}% 
-\newcommand\Virgo{\astro{\char16}}% 
-\newcommand\Libra{\astro{\char17}}% 
-\newcommand\AEq{\Libra}% autumnal equinox (Libra) 
-\newcommand\Scorpius{\astro{\char18}}% 
-\newcommand\Sagittarius{\astro{\char19}}% 
-\newcommand\Capricornus{\astro{\char20}}% 
-\newcommand\Aquarius{\astro{\char21}}% 
-\newcommand\Pisces{\astro{\char22}}% 
- 
+\newcommand\diameter{\ooalign{\hfil/\hfil\crcr\mathhexbox20D}}%
+\newcommand\degr{\arcdeg}%
+\newcommand\Sun{\sun}%
+\newcommand\Sol{\sun}%
+\newcommand\sun{\odot}%
+\newcommand\Mercury{\astro{\char1}}% Mercury symbol, "1"
+\newcommand\Venus{\astro{\char2}}% Venus symbol, "2"
+\newcommand\Earth{\earth}%
+\newcommand\Terra{\earth}%
+\newcommand\earth{\oplus}%
+\newcommand\Mars{\astro{\char4}}% Mars symbol, "4"
+\newcommand\Jupiter{\astro{\char5}}% Jupiter symbol, "5"
+\newcommand\Saturn{\astro{\char6}}% Saturn symbol, "6"
+\newcommand\Uranus{\astro{\char7}}% Uranus symbol, "7"
+\newcommand\Neptune{\astro{\char8}}% Neptune symbol, "8"
+\newcommand\Pluto{\astro{\char9}}% Pluo symbol, "9"
+\newcommand\Moon{\astro{\char10}}% Moon symbol, "M"
+\newcommand\Luna{\Moon}%
+\newcommand\Aries{\astro{\char11}}%
+\newcommand\VEq{\Aries}% vernal equinox (Aries)
+\newcommand\Taurus{\astro{\char12}}%
+\newcommand\Gemini{\astro{\char13}}%
+\newcommand\Cancer{\astro{\char14}}%
+\newcommand\Leo{\astro{\char15}}%
+\newcommand\Virgo{\astro{\char16}}%
+\newcommand\Libra{\astro{\char17}}%
+\newcommand\AEq{\Libra}% autumnal equinox (Libra)
+\newcommand\Scorpius{\astro{\char18}}%
+\newcommand\Sagittarius{\astro{\char19}}%
+\newcommand\Capricornus{\astro{\char20}}%
+\newcommand\Aquarius{\astro{\char21}}%
+\newcommand\Pisces{\astro{\char22}}%
+
 \newcommand\sbond{\chem@bnd{\@sbnd}}%
 \newcommand\dbond{\chem@bnd{\@dbnd}}%
 \newcommand\tbond{\chem@bnd{\@tbnd}}%
@@ -1256,59 +1256,59 @@ revtex4-1.cls^^J^^J}\stop
  \vrule\@height\dimen@\@depth\dimen@i\@width\dimen@ii\nobreak
  }%
 
-\newcommand\anchor[2]{#2}% 
-\renewcommand\url{\@dblarg\@url}% 
-\def\@url[#1]{\anchor{#1}}% 
+\newcommand\anchor[2]{#2}%
+\renewcommand\url{\@dblarg\@url}%
+\def\@url[#1]{\anchor{#1}}%
 
-\let\jnl@style=\rmfamily 
-\def\ref@jnl#1{{\jnl@style#1}}% 
-\newcommand\aj{\ref@jnl{AJ}}%        % Astronomical Journal 
-\newcommand\araa{\ref@jnl{ARA\&A}}%  % Annual Review of Astron and Astrophys 
-\renewcommand\apj{\ref@jnl{ApJ}}%    % Astrophysical Journal 
-\newcommand\apjl{\ref@jnl{\@eapj@ApJLetters}}%     % Astrophysical Journal, Letters 
-\newcommand\apjs{\ref@jnl{ApJS}}%    % Astrophysical Journal, Supplement 
-\renewcommand\ao{\ref@jnl{Appl.~Opt.}}%   % Applied Optics 
-\newcommand\apss{\ref@jnl{Ap\&SS}}%  % Astrophysics and Space Science 
-\newcommand\aap{\ref@jnl{A\&A}}%     % Astronomy and Astrophysics 
-\newcommand\aapr{\ref@jnl{A\&A~Rev.}}%  % Astronomy and Astrophysics Reviews 
-\newcommand\aaps{\ref@jnl{A\&AS}}%    % Astronomy and Astrophysics, Supplement 
-\newcommand\azh{\ref@jnl{AZh}}%       % Astronomicheskii Zhurnal 
-\newcommand\baas{\ref@jnl{BAAS}}%     % Bulletin of the AAS 
+\let\jnl@style=\rmfamily
+\def\ref@jnl#1{{\jnl@style#1}}%
+\newcommand\aj{\ref@jnl{AJ}}%        % Astronomical Journal
+\newcommand\araa{\ref@jnl{ARA\&A}}%  % Annual Review of Astron and Astrophys
+\renewcommand\apj{\ref@jnl{ApJ}}%    % Astrophysical Journal
+\newcommand\apjl{\ref@jnl{ApJLetters}}%     % Astrophysical Journal, Letters 
+\newcommand\apjs{\ref@jnl{ApJS}}%    % Astrophysical Journal, Supplement
+\renewcommand\ao{\ref@jnl{Appl.~Opt.}}%   % Applied Optics
+\newcommand\apss{\ref@jnl{Ap\&SS}}%  % Astrophysics and Space Science
+\newcommand\aap{\ref@jnl{A\&A}}%     % Astronomy and Astrophysics
+\newcommand\aapr{\ref@jnl{A\&A~Rev.}}%  % Astronomy and Astrophysics Reviews
+\newcommand\aaps{\ref@jnl{A\&AS}}%    % Astronomy and Astrophysics, Supplement
+\newcommand\azh{\ref@jnl{AZh}}%       % Astronomicheskii Zhurnal
+\newcommand\baas{\ref@jnl{BAAS}}%     % Bulletin of the AAS
 \newcommand\icarus{\ref@jnl{Icarus}}% % Icarus
-\newcommand\jrasc{\ref@jnl{JRASC}}%   % Journal of the RAS of Canada 
-\newcommand\memras{\ref@jnl{MmRAS}}%  % Memoirs of the RAS 
-\newcommand\mnras{\ref@jnl{MNRAS}}%   % Monthly Notices of the RAS 
-\renewcommand\pra{\ref@jnl{Phys.~Rev.~A}}% % Physical Review A: General Physics 
-\renewcommand\prb{\ref@jnl{Phys.~Rev.~B}}% % Physical Review B: Solid State 
-\renewcommand\prc{\ref@jnl{Phys.~Rev.~C}}% % Physical Review C 
-\renewcommand\prd{\ref@jnl{Phys.~Rev.~D}}% % Physical Review D 
-\renewcommand\pre{\ref@jnl{Phys.~Rev.~E}}% % Physical Review E 
-\renewcommand\prl{\ref@jnl{Phys.~Rev.~Lett.}}% % Physical Review Letters 
-\newcommand\pasp{\ref@jnl{PASP}}%     % Publications of the ASP 
-\newcommand\pasj{\ref@jnl{PASJ}}%     % Publications of the ASJ 
-\newcommand\qjras{\ref@jnl{QJRAS}}%   % Quarterly Journal of the RAS 
-\newcommand\skytel{\ref@jnl{S\&T}}%   % Sky and Telescope 
-\newcommand\solphys{\ref@jnl{Sol.~Phys.}}% % Solar Physics 
-\newcommand\sovast{\ref@jnl{Soviet~Ast.}}% % Soviet Astronomy 
-\newcommand\ssr{\ref@jnl{Space~Sci.~Rev.}}% % Space Science Reviews 
-\newcommand\zap{\ref@jnl{ZAp}}%       % Zeitschrift fuer Astrophysik 
-\renewcommand\nat{\ref@jnl{Nature}}%  % Nature 
-\newcommand\iaucirc{\ref@jnl{IAU~Circ.}}% % IAU Cirulars 
-\newcommand\aplett{\ref@jnl{Astrophys.~Lett.}}%  % Astrophysics Letters 
-\newcommand\apspr{\ref@jnl{Astrophys.~Space~Phys.~Res.}}% % Astrophysics Space Physics Research 
-\newcommand\bain{\ref@jnl{Bull.~Astron.~Inst.~Netherlands}}% % Bulletin Astronomical Institute of the Netherlands 
-\newcommand\fcp{\ref@jnl{Fund.~Cosmic~Phys.}}%   % Fundamental Cosmic Physics 
-\newcommand\gca{\ref@jnl{Geochim.~Cosmochim.~Acta}}% % Geochimica Cosmochimica Acta 
-\newcommand\grl{\ref@jnl{Geophys.~Res.~Lett.}}%  % Geophysics Research Letters 
-\renewcommand\jcp{\ref@jnl{J.~Chem.~Phys.}}%     % Journal of Chemical Physics 
-\newcommand\jgr{\ref@jnl{J.~Geophys.~Res.}}%     % Journal of Geophysics Research 
-\newcommand\jqsrt{\ref@jnl{J.~Quant.~Spec.~Radiat.~Transf.}}%   % Journal of Quantitiative Spectroscopy and Radiative Trasfer 
-\newcommand\memsai{\ref@jnl{Mem.~Soc.~Astron.~Italiana}}% % Mem. Societa Astronomica Italiana 
-\newcommand\nphysa{\ref@jnl{Nucl.~Phys.~A}}%     % Nuclear Physics A 
-\newcommand\physrep{\ref@jnl{Phys.~Rep.}}%       % Physics Reports 
-\newcommand\physscr{\ref@jnl{Phys.~Scr}}%        % Physica Scripta 
-\newcommand\planss{\ref@jnl{Planet.~Space~Sci.}}%  % Planetary Space Science 
-\newcommand\procspie{\ref@jnl{Proc.~SPIE}}%      % Proceedings of the SPIE 
+\newcommand\jrasc{\ref@jnl{JRASC}}%   % Journal of the RAS of Canada
+\newcommand\memras{\ref@jnl{MmRAS}}%  % Memoirs of the RAS
+\newcommand\mnras{\ref@jnl{MNRAS}}%   % Monthly Notices of the RAS
+\renewcommand\pra{\ref@jnl{Phys.~Rev.~A}}% % Physical Review A: General Physics
+\renewcommand\prb{\ref@jnl{Phys.~Rev.~B}}% % Physical Review B: Solid State
+\renewcommand\prc{\ref@jnl{Phys.~Rev.~C}}% % Physical Review C
+\renewcommand\prd{\ref@jnl{Phys.~Rev.~D}}% % Physical Review D
+\renewcommand\pre{\ref@jnl{Phys.~Rev.~E}}% % Physical Review E
+\renewcommand\prl{\ref@jnl{Phys.~Rev.~Lett.}}% % Physical Review Letters
+\newcommand\pasp{\ref@jnl{PASP}}%     % Publications of the ASP
+\newcommand\pasj{\ref@jnl{PASJ}}%     % Publications of the ASJ
+\newcommand\qjras{\ref@jnl{QJRAS}}%   % Quarterly Journal of the RAS
+\newcommand\skytel{\ref@jnl{S\&T}}%   % Sky and Telescope
+\newcommand\solphys{\ref@jnl{Sol.~Phys.}}% % Solar Physics
+\newcommand\sovast{\ref@jnl{Soviet~Ast.}}% % Soviet Astronomy
+\newcommand\ssr{\ref@jnl{Space~Sci.~Rev.}}% % Space Science Reviews
+\newcommand\zap{\ref@jnl{ZAp}}%       % Zeitschrift fuer Astrophysik
+\renewcommand\nat{\ref@jnl{Nature}}%  % Nature
+\newcommand\iaucirc{\ref@jnl{IAU~Circ.}}% % IAU Cirulars
+\newcommand\aplett{\ref@jnl{Astrophys.~Lett.}}%  % Astrophysics Letters
+\newcommand\apspr{\ref@jnl{Astrophys.~Space~Phys.~Res.}}% % Astrophysics Space Physics Research
+\newcommand\bain{\ref@jnl{Bull.~Astron.~Inst.~Netherlands}}% % Bulletin Astronomical Institute of the Netherlands
+\newcommand\fcp{\ref@jnl{Fund.~Cosmic~Phys.}}%   % Fundamental Cosmic Physics
+\newcommand\gca{\ref@jnl{Geochim.~Cosmochim.~Acta}}% % Geochimica Cosmochimica Acta
+\newcommand\grl{\ref@jnl{Geophys.~Res.~Lett.}}%  % Geophysics Research Letters
+\renewcommand\jcp{\ref@jnl{J.~Chem.~Phys.}}%     % Journal of Chemical Physics
+\newcommand\jgr{\ref@jnl{J.~Geophys.~Res.}}%     % Journal of Geophysics Research
+\newcommand\jqsrt{\ref@jnl{J.~Quant.~Spec.~Radiat.~Transf.}}%   % Journal of Quantitiative Spectroscopy and Radiative Trasfer
+\newcommand\memsai{\ref@jnl{Mem.~Soc.~Astron.~Italiana}}% % Mem. Societa Astronomica Italiana
+\newcommand\nphysa{\ref@jnl{Nucl.~Phys.~A}}%     % Nuclear Physics A
+\newcommand\physrep{\ref@jnl{Phys.~Rep.}}%       % Physics Reports
+\newcommand\physscr{\ref@jnl{Phys.~Scr}}%        % Physica Scripta
+\newcommand\planss{\ref@jnl{Planet.~Space~Sci.}}%  % Planetary Space Science
+\newcommand\procspie{\ref@jnl{Proc.~SPIE}}%      % Proceedings of the SPIE
 
 \newcommand\actaa{\ref@jnl{Acta Astron.}}%  % Acta Astronomica
 \newcommand\caa{\ref@jnl{Chinese Astron. Astrophys.}}%  % Chinese Astronomy and Astrophysics
@@ -1320,13 +1320,13 @@ revtex4-1.cls^^J^^J}\stop
 \newcommand\rmxaa{\ref@jnl{Rev. Mexicana Astron. Astrofis.}}%  % Revista Mexicana de Astronomia y Astrofisica
 
 
-\let\astap=\aap 
-\let\apjlett=\apjl 
-\let\apjsupp=\apjs 
-\let\applopt=\ao 
+\let\astap=\aap
+\let\apjlett=\apjl
+\let\apjsupp=\apjs
+\let\applopt=\ao
 
-\newcommand\ulap[1]{\vbox\@to\z@{{\vss#1}}}% 
-\newcommand\dlap[1]{\vbox\@to\z@{{#1\vss}}}% 
+\newcommand\ulap[1]{\vbox\@to\z@{{\vss#1}}}%
+\newcommand\dlap[1]{\vbox\@to\z@{{#1\vss}}}%
 
 
 % Implementation of deluxetables via the longtable package disabled.
@@ -1423,7 +1423,7 @@ revtex4-1.cls^^J^^J}\stop
   \caption{\\%
     \@tablecaption}%
     \\\hline\hline%
-  #1\vrule height 12pt depth 10pt width 0pt\relax 
+  #1\vrule height 12pt depth 10pt width 0pt\relax
 \hskip\tabcolsep\\[.7ex]
   \hline\\[-1.5ex]
   \endfirsthead
@@ -1513,9 +1513,9 @@ revtex4-1.cls^^J^^J}\stop
 \newdimen\lastrowheight
 \def\set@last@row@height{\setlength{\lastrowheight}{\ht\strutbox}\addtolength{\lastrowheight}{\dp\strutbox}\setlength{\lastrowheight}{-\arraystretch\lastrowheight}}
 
-\let\tableline=\hline % Revtex said: Command \tableline is obsolete; Use \colrule instead.. 
+\let\tableline=\hline % Revtex said: Command \tableline is obsolete; Use \colrule instead..
 
-\newtoks\DT@p@ftn 
+\newtoks\DT@p@ftn
 \global\def\tablenotetext@DT#1#2{
 %  \edef\@tempa{\the\DT@p@ftn\noexpand\footnotetext[#1]}
   \edef\@tempa{\the\DT@p@ftn\noexpand\tablenotemark{#1}~}
@@ -1531,39 +1531,39 @@ revtex4-1.cls^^J^^J}\stop
 \def\resetdecimals{\global\let\zdoit\relax\global\let\ddoit\relax}
 
 \def\tableheadfrac#1{}
-\newcount\pt@column 
-\newcount\pt@ncol 
+\newcount\pt@column
+\newcount\pt@ncol
 
-\newcommand\tablecolumns[1]{% 
- \pt@column=#1\relax 
- \pt@ncol=#1\relax 
- \global\let\pt@addcol\@empty 
-}% 
+\newcommand\tablecolumns[1]{%
+ \pt@column=#1\relax
+ \pt@ncol=#1\relax
+ \global\let\pt@addcol\@empty
+}%
 
 %% from older version, probably can delete:
-\def\@tablecom#1{% 
+\def\@tablecom#1{%
  \vspace*{\table@note@skip}
-\par 
-{\parbox{\linewidth}{\hskip1em\rmfamily {\@eapj@cap@font Note}. --- #1}\par}% 
-}% 
-\def\@tableref#1{% 
+\par
+{\parbox{\linewidth}{\hskip1em\rmfamily {\@eapj@cap@font Note}. --- #1}\par}%
+}%
+\def\@tableref#1{%
  \vspace*{\table@note@skip}
-\par 
-{\parbox{\linewidth}{\hskip1em\rmfamily {\@eapj@cap@font References}. --- #1}\par}% 
-}% 
-\def\spew@tblnotes{% 
- \@ifx@empty\tblref@list{}{% 
+\par
+{\parbox{\linewidth}{\hskip1em\rmfamily {\@eapj@cap@font References}. --- #1}\par}%
+}%
+\def\spew@tblnotes{%
+ \@ifx@empty\tblref@list{}{%
   \@tablenotes{\tblref@list}%
   \vspace*{\table@note@skip}%
-  \global\let\tblref@list\@empty 
- }% 
- \@ifx@empty\tblnote@list{}{% 
-  \@tablenotes{\tblnote@list}% 
+  \global\let\tblref@list\@empty
+ }%
+ \@ifx@empty\tblnote@list{}{%
+  \@tablenotes{\tblnote@list}%
   \vspace*{\table@note@skip}%
   \global\let\tblnote@list\@empty
  }
  \the\DT@p@ftn%
-}% 
+}%
 
 %% for notes on emulateapj please see http://hea-www.harvard.edu/~alexey/emulateapj
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1621,7 +1621,7 @@ revtex4-1.cls^^J^^J}\stop
 %%%%%%%%
 %% 3) \begin{splittabular}{<preamble B preamble>}...\end{splittabular}
 %%    `B' in the preamble will show where the table should be broken. It may
-%%    be used once in a preamble to break the table into two parts, or 
+%%    be used once in a preamble to break the table into two parts, or
 %%    two times in a preamble to break the table into three parts.
 
 %%    The resulting table will position left half of table above right half of table.
@@ -1637,7 +1637,7 @@ revtex4-1.cls^^J^^J}\stop
 %%     and change it to:
 %%        \begin{splittabular}{ccccBccc}
 %%        \multicolumn{4}{c}{\textsc{Table 1}}\\
-%% 
+%%
 %%     If you'd like to have a table number in the second half of the table,
 %%     you can ask for a second multicolumn command that will position at the
 %%     top of the second half of the table:
@@ -1653,7 +1653,7 @@ revtex4-1.cls^^J^^J}\stop
 %%        \multicolumn{4}{c}{\textsc{Log of \textit{HST} Observations for
 %%         NGC~6388}}&\multicolumn{3}{c}{\textsc{Log of \textit{HST} Observations for
 %%         NGC~6388, Continued}}\\
-%%     
+%%
 %%     Similarly, you can rearrange table notes to appear at the bottom of
 %%     the appropriate half of the table. For instance, starting with this,
 %%     which would make table notes both appear at the bottom of the top half
@@ -1661,20 +1661,20 @@ revtex4-1.cls^^J^^J}\stop
 %%        \multicolumn{4}{l}{\small{$\dagger$ Average distance of data set from
 %%            cluster center.}}\\
 %%        \multicolumn{4}{l}{$^{\rm a}$SNAP program.}\\
-%%     
+%%
 %%     We may substitute the following:
 %%        \multicolumn{4}{l}{$^{\rm a}$SNAP program.}&\multicolumn{3}{l}{\small{$\dagger$ Average distance of data set from
 %%            cluster center.}}\\
-%%     
+%%
 %%     Which will produce the first endnote underneath the top half of the
 %%     table, and the second underneath the bottom half.
-%%     
+%%
 %%     Another option would be to have both endnotes appear below the bottom
 %%     half of the table. Easily done:
 %%        &&&&\multicolumn{3}{l}{$^{\rm a}$SNAP program.}\\
 %%        &&&&\multicolumn{3}{l}{\small{$\dagger$ Average distance of data set from
 %%            cluster center.}}\\
-%%     %%     %%     %%     %%     %%     %%     
+%%     %%     %%     %%     %%     %%     %%
 
 %%%%%%%%
 %% 4) \colnumbers will make line with column numbers automatic. It will work with splittabular
@@ -1695,7 +1695,7 @@ revtex4-1.cls^^J^^J}\stop
 %%     If you want to type in a column header  over the decimal
 %%     numbers, please use \multicolumn2c{} to span both columns.
 
-%%     After the column headers, to start decimal numbering, 
+%%     After the column headers, to start decimal numbering,
 %%     type in \decimals in the body of the table.
 
 %%     When entering decimal numbers
@@ -1718,12 +1718,12 @@ revtex4-1.cls^^J^^J}\stop
 %     three&.0 &62.5 \\
 %     four&245 &5034.349923 \\
 %     five&21 & \\
-%     six& &21.6 
+%     six& &21.6
 %    \end{tabular}
 %%
 %    Decimal numbering works within \begin{splittabular}...\end{splittabular}
 %    \begin{splitdeluxetable} and \end{splitdeluxetable} for tables broken into two
-%    or three parts. \colnumbers will number the columns counting both sides 
+%    or three parts. \colnumbers will number the columns counting both sides
 %    of the decimal number as one column; \tablehead{\colhead{}...} will make
 %    the column headers position above the two columns used for one decimal
 %    number as well.
@@ -1802,7 +1802,7 @@ revtex4-1.cls^^J^^J}\stop
 %% reset line counting at \\
 
 %% arraycr redefined to match revtex4-1
-\def\new@arraycr{\relax 
+\def\new@arraycr{\relax
 \global\columncount=0\relax
 \global\colheadcount=0\relax
 \iffalse {\fi \ifnum 0=`}\fi \@ifstar {\global \@tbpen \@M \@xarraycr}
@@ -1838,7 +1838,7 @@ revtex4-1.cls^^J^^J}\stop
 -----------------------------------------------------
 ^^J
 Warning!
-^^J^^J 
+^^J^^J
 Too many columns in first part of table!
 ^^J^^J
 Maximum number of columns in each part of the table is 25. Each `D' counts as two columns.
@@ -1859,7 +1859,7 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 \typeout{^^J-----------------------------------------------------
 ^^J
 Warning!
-^^J^^J 
+^^J^^J
 Too many columns in second part of table!
 ^^J^^J
 Maximum number of columns in each part of the table is 25. Each `D' counts as two columns.
@@ -1981,7 +1981,7 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 \firstboxtrue\secondboxfalse\thirdboxfalse
 %
 \setbox\firsttablebox=\hbox{%
-\begin{tabular}{AFE}% 
+\begin{tabular}{AFE}%
 #2\crcr
 \end{tabular}}
 %
@@ -2095,7 +2095,7 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
    \def\@sharp{}%
 %% comment out \@arstrut to prevent blank line where multicolumn was found
 %% on other parts of the table, but not on the current part.
-   \@arstrut 
+   \@arstrut
 \@preamble
    \null\ignorespaces
 \else%
@@ -2194,58 +2194,58 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or% 3
   \ifcase\firsthowmanyDs%
-  \newcolumntype{f}{hhh}% 0 
+  \newcolumntype{f}{hhh}% 0
   \or%
   \newcolumntype{f}{dh}% 1
   \fi%
 %%%%%%%%%%%%%%%%%%
 \or% 4
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhh} % 0 
+   \newcolumntype{f}{hhhh} % 0
     \or
    \newcolumntype{f}{dhh} % 1
    \or
-   \newcolumntype{f}{dd} % 2 
+   \newcolumntype{f}{dd} % 2
    \fi
 %%%%%%%%%%%%%%%%%%
 \or% 5
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhh} % 0 
+   \newcolumntype{f}{hhhhh} % 0
     \or
    \newcolumntype{f}{dhhh} % 1
    \or
-   \newcolumntype{f}{ddh} % 2 
+   \newcolumntype{f}{ddh} % 2
    \fi
 %%%%%%%%%%%%%%%%%%
 \or% 6
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhh} % 0 
+   \newcolumntype{f}{hhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhh} % 1
    \or
-   \newcolumntype{f}{ddhh} % 2 
+   \newcolumntype{f}{ddhh} % 2
     \or
    \newcolumntype{f}{ddd} % 3
    \fi
 %%%%%%%%%%%%%%%
 \or % 7
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhh} % 2 
+   \newcolumntype{f}{ddhhh} % 2
    \or
    \newcolumntype{f}{dddh} % 3
    \fi
 %%%%%%%%%%%%%%%%%%
 \or % 8
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhh} % 2 
+   \newcolumntype{f}{ddhhhh} % 2
    \or
    \newcolumntype{f}{dddhh} % 3
    \or
@@ -2254,11 +2254,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or % 9
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhh} % 3
    \or
@@ -2267,11 +2267,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %10
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhh} % 3
    \or
@@ -2282,11 +2282,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or % 11
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhh} % 3
    \or
@@ -2297,11 +2297,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or % 12
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhh} % 3
    \or
@@ -2314,11 +2314,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %13
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhhhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhh} % 3
    \or
@@ -2331,11 +2331,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %14
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhhhhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhhh} % 3
    \or
@@ -2350,11 +2350,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %15
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhhhhhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhhhh} % 3
    \or
@@ -2369,11 +2369,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %16
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhhhhhhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhhhhh} % 3
    \or
@@ -2390,11 +2390,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %17
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhhhhhhhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhhhhhh} % 3
    \or
@@ -2411,11 +2411,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %18
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhhhhhhhhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhhhhhhh} % 3
    \or
@@ -2434,11 +2434,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %19
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhhhhhhhhhhhhhhhh} % 0 
+   \newcolumntype{f}{hhhhhhhhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhhhhhhhh} % 3
    \or
@@ -2457,11 +2457,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %20
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhh hhhhh hhhhh hhhhh} % 0 
+   \newcolumntype{f}{hhhhh hhhhh hhhhh hhhhh} % 0
     \or
    \newcolumntype{f}{dhhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhhhhhhhhh} % 3
    \or
@@ -2482,11 +2482,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %21
   \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhh hhhhh hhhhh hhhhh h} % 0 
+   \newcolumntype{f}{hhhhh hhhhh hhhhh hhhhh h} % 0
    \or
    \newcolumntype{f}{dhhhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhhhhhhhhhh} % 3
    \or
@@ -2507,11 +2507,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %22
 \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhh hhhhh hhhhh hhhhh hh} % 0 
+   \newcolumntype{f}{hhhhh hhhhh hhhhh hhhhh hh} % 0
    \or
    \newcolumntype{f}{dhhhhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhhhhhhhhhhh} % 3
    \or
@@ -2534,11 +2534,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %23
 \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhh hhhhh hhhhh hhhhh hhh} % 0 
+   \newcolumntype{f}{hhhhh hhhhh hhhhh hhhhh hhh} % 0
    \or
    \newcolumntype{f}{dhhhhhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhhhhhhhhhhhh} % 3
    \or
@@ -2561,11 +2561,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %24
 \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhh hhhhh hhhhh hhhhh hhhh} % 0 
+   \newcolumntype{f}{hhhhh hhhhh hhhhh hhhhh hhhh} % 0
    \or
    \newcolumntype{f}{dhhhhhhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhhhhhhhhhhhhh} % 3
    \or
@@ -2590,11 +2590,11 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \or %25
 \ifcase\firsthowmanyDs
-   \newcolumntype{f}{hhhhh hhhhh hhhhh hhhhh hhhhh} % 0 
+   \newcolumntype{f}{hhhhh hhhhh hhhhh hhhhh hhhhh} % 0
    \or
    \newcolumntype{f}{dhhhhhhhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{f}{ddhhhhhhhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{f}{ddhhhhhhhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{f}{dddhhhhhhhhhhhhhhhhhhh} % 3
    \or
@@ -2619,8 +2619,8 @@ Maximum number of columns in each part of the table is 25. Each `D' counts as tw
 %%%%%%%%%%%%%%%%%%
 \else
 \typeout{^^J----------------------------------------------------- ^^J
-Warning!^^J^^J 
-Too many Columns using in Splittabular. 
+Warning!^^J^^J
+Too many Columns using in Splittabular.
 ^^J
 25 column maximum in
 each part of the table.^^J Each`T' counts as two columns.
@@ -2651,58 +2651,58 @@ each part of the table.^^J Each`T' counts as two columns.
 \or
 %3
   \ifcase\secondhowmanyDs
-  \newcolumntype{F}{hhh} % 0 
+  \newcolumntype{F}{hhh} % 0
   \or
-  \newcolumntype{F}{dh} % 1 
+  \newcolumntype{F}{dh} % 1
   \fi
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhh} % 0 
+   \newcolumntype{F}{hhhh} % 0
     \or
    \newcolumntype{F}{dhh} % 1
    \or
-   \newcolumntype{F}{dd} % 2 
+   \newcolumntype{F}{dd} % 2
    \fi
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhh} % 0 
+   \newcolumntype{F}{hhhhh} % 0
     \or
    \newcolumntype{F}{dhhh} % 1
    \or
-   \newcolumntype{F}{ddh} % 2 
+   \newcolumntype{F}{ddh} % 2
    \fi
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhh} % 0 
+   \newcolumntype{F}{hhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhh} % 1
    \or
-   \newcolumntype{F}{ddhh} % 2 
+   \newcolumntype{F}{ddhh} % 2
    \or
    \newcolumntype{F}{ddd} % 3
    \fi
 %%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhh} % 2 
+   \newcolumntype{F}{ddhhh} % 2
    \or
    \newcolumntype{F}{dddh} % 3
    \fi
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhh} % 2 
+   \newcolumntype{F}{ddhhhh} % 2
    \or
    \newcolumntype{F}{dddhh} % 3
    \or
@@ -2711,11 +2711,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhh} % 3
    \or
@@ -2724,11 +2724,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhh} % 3
    \or
@@ -2739,11 +2739,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhh} % 3
    \or
@@ -2754,11 +2754,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhh} % 3
    \or
@@ -2771,11 +2771,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhhhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhh} % 3
    \or
@@ -2788,11 +2788,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhhhhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhhh} % 3
    \or
@@ -2807,11 +2807,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhhhhhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhhhh} % 3
    \or
@@ -2826,11 +2826,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhhhhhhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhhhhh} % 3
    \or
@@ -2847,11 +2847,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhhhhhhhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhhhhhh} % 3
    \or
@@ -2868,11 +2868,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhhhhhhhhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhhhhhhh} % 3
    \or
@@ -2891,11 +2891,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhhhhhhhhhhhhhhhh} % 0 
+   \newcolumntype{F}{hhhhhhhhhhhhhhhhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhhhhhhhh} % 3
    \or
@@ -2914,11 +2914,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhh hhhhh hhhhh hhhhh} % 0 
+   \newcolumntype{F}{hhhhh hhhhh hhhhh hhhhh} % 0
     \or
    \newcolumntype{F}{dhhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhhhhhhhhh} % 3
    \or
@@ -2939,11 +2939,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
   \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhh hhhhh hhhhh hhhhh h} % 0 
+   \newcolumntype{F}{hhhhh hhhhh hhhhh hhhhh h} % 0
    \or
    \newcolumntype{F}{dhhhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhhhhhhhhhh} % 3
    \or
@@ -2964,11 +2964,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
 \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhh hhhhh hhhhh hhhhh hh} % 0 
+   \newcolumntype{F}{hhhhh hhhhh hhhhh hhhhh hh} % 0
    \or
    \newcolumntype{F}{dhhhhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhhhhhhhhhhh} % 3
    \or
@@ -2991,11 +2991,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
 \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhh hhhhh hhhhh hhhhh hhh} % 0 
+   \newcolumntype{F}{hhhhh hhhhh hhhhh hhhhh hhh} % 0
    \or
    \newcolumntype{F}{dhhhhhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhhhhhhhhhhhh} % 3
    \or
@@ -3018,11 +3018,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
 \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhh hhhhh hhhhh hhhhh hhhh} % 0 
+   \newcolumntype{F}{hhhhh hhhhh hhhhh hhhhh hhhh} % 0
    \or
    \newcolumntype{F}{dhhhhhhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhhhhhhhhhhhhh} % 3
    \or
@@ -3047,11 +3047,11 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \or
 \ifcase\secondhowmanyDs
-   \newcolumntype{F}{hhhhh hhhhh hhhhh hhhhh hhhhh} % 0 
+   \newcolumntype{F}{hhhhh hhhhh hhhhh hhhhh hhhhh} % 0
    \or
    \newcolumntype{F}{dhhhhhhhhhhhhhhhhhhhhhhh} % 1
    \or
-   \newcolumntype{F}{ddhhhhhhhhhhhhhhhhhhhhh} % 2 
+   \newcolumntype{F}{ddhhhhhhhhhhhhhhhhhhhhh} % 2
    \or
    \newcolumntype{F}{dddhhhhhhhhhhhhhhhhhhh} % 3
    \or
@@ -3076,8 +3076,8 @@ each part of the table.^^J Each`T' counts as two columns.
 %%%%%%%%%%%%%%%%%%
 \else
 \typeout{^^J----------------------------------------------------- ^^J
-Warning!^^J^^J 
-Too many Columns using in Splittabular. 
+Warning!^^J^^J
+Too many Columns using in Splittabular.
 ^^J
 25 column maximum in
 each part of the table.^^J Each`D' counts as two columns.
@@ -3087,7 +3087,7 @@ each part of the table.^^J Each`D' counts as two columns.
 
 %% we don't have to worry about D's in this section, fortunately.
 \gdef\makethirddummycolumns{
-\ifcase\thirdcolcount 
+\ifcase\thirdcolcount
 \or\newcolumntype{E}{h}
 \or\newcolumntype{E}{hh}
 \or\newcolumntype{E}{hhh}
@@ -3115,7 +3115,7 @@ each part of the table.^^J Each`D' counts as two columns.
 \or\newcolumntype{E}{hhhhhhhhhhhhhhhhhhhhhhhhh} %% up to 25 columns
 \else \typeout{^^J-----------------------------------------------------^^J
 Warning!
-^^J^^J Too many Columns in Splittabular. 
+^^J^^J Too many Columns in Splittabular.
 ^^J
 25 column maximum in
 each part of the table.^^J
@@ -3397,7 +3397,7 @@ Each `D' counts as two columns.
 \csname tab21\endcsname&\csname tab22\endcsname&%
 \csname tab23\endcsname&\csname tab24\endcsname&%
 \csname tab25\endcsname%
-\or% 
+\or%
 \csname tab1\endcsname&\csname tab2\endcsname&%
 \csname tab3\endcsname&\csname tab4\endcsname&%
 \csname tab5\endcsname&\csname tab6\endcsname&%
@@ -3481,7 +3481,7 @@ Thank you!^^J}\fi%
 \ifbreaktab\\\hline% below, hline is wanted
 \else
 \\\noalign{\vskip-17pt}
-\vrule height 28pt width0pt %the \vrule is in the line below colnumbers; 
+\vrule height 28pt width0pt %the \vrule is in the line below colnumbers;
                           % it causes all the vrules on that line to grow to 28pt.
                           % The -14pt will cause the lower line to overlap the upper line.
                           % Complication, needed to add this vrule to Z and z in order to
@@ -3700,7 +3700,7 @@ Thank you!^^J}\fi%
 \csname tab21\endcsname&\csname tab22\endcsname&%
 \csname tab23\endcsname&\csname tab24\endcsname&%
 \csname tab25\endcsname%
-\or% 
+\or%
 \csname tab1\endcsname&\csname tab2\endcsname&%
 \csname tab3\endcsname&\csname tab4\endcsname&%
 \csname tab5\endcsname&\csname tab6\endcsname&%
@@ -3783,7 +3783,7 @@ Sorry, more than 30 columns cannot be numbered with^^J
 Thank you!^^J}\fi%
 \\\hline% below, hline is wanted
 %\\\noalign{\vskip-30pt}
-%\vrule height 28pt width0pt %the \vrule is in the line below colnumbers; 
+%\vrule height 28pt width0pt %the \vrule is in the line below colnumbers;
                           % it causes all the vrules on that line to grow to 28pt.
                           % The -14pt will cause the lower line to overlap the upper line.
                           % Complication, needed to add this vrule to Z and z in order to
@@ -4015,7 +4015,7 @@ Thank you!^^J}\fi%
 \csname tab21\endcsname&\csname tab22\endcsname&%
 \csname tab23\endcsname&\csname tab24\endcsname&%
 \csname tab25\endcsname%
-\or% 
+\or%
 \csname tab1\endcsname&\csname tab2\endcsname&%
 \csname tab3\endcsname&\csname tab4\endcsname&%
 \csname tab5\endcsname&\csname tab6\endcsname&%
@@ -4099,7 +4099,7 @@ Thank you!^^J}\fi%
 \\\hline% below, hline is wanted
 \iffirsttime
 \\\noalign{\vskip-30pt}
-\vrule height 28pt width0pt %the \vrule is in the line below colnumbers; 
+\vrule height 28pt width0pt %the \vrule is in the line below colnumbers;
                           % it causes all the vrules on that line to grow to 28pt.
                           % The -14pt will cause the lower line to overlap the upper line.
                           % Complication, needed to add this vrule to Z and z in order to
@@ -4345,7 +4345,7 @@ to\hsize{\hss\vtop{\hsize=\wd0
 
 \newif\ifsplitstar
 \expandafter\def\csname splitdeluxetable*\endcsname{\global\splitstartrue\splitdeluxetable}
-\expandafter\def\csname endsplitdeluxetable*\endcsname{\endsplitdeluxetable\global\splitstarfalse 
+\expandafter\def\csname endsplitdeluxetable*\endcsname{\endsplitdeluxetable\global\splitstarfalse
 \global\colnumbersonfalse
 \global\deluxedecimalsfalse
 }
@@ -4541,7 +4541,7 @@ width 0pt{\bf References}---{#1}\vskip1sp}}
 \gdef\lookfordecimal#1#2#3#4.#5 {\gdef\xone{{\let$\relax\savedollar#4\savedollar}}
 \gdef\xtwo{#5}\ifx\xtwo\empty\else\gdef\xtwo{{\let$\relax\savedollar#5\savedollar}}\fi}
 
-%% D 
+%% D
 \def\newdoit{\setbox0=\hbox\bgroup\zdoit}
 \def\endnewdoit{\egroup\unhbox0}
 
@@ -4564,12 +4564,12 @@ width 0pt{\bf References}---{#1}\vskip1sp}}
 \let\saveddoit\ddoit
 \let\ddoit\relax
 
-%% to delete all D material: 
+%% to delete all D material:
 
 \gdef\xxdoit{&}
 
 \newcolumntype{D}{>\newdoit r<{\endnewdoit} @{}l}
-\newcolumntype{d}{>\xnewdoit h<{\xendnewdoit} @{}h} %% 
+\newcolumntype{d}{>\xnewdoit h<{\xendnewdoit} @{}h} %%
 
 \newdimen\savetabskip
 \gdef\decimals{\noalign{\global\savetabskip\tabskip
@@ -4639,7 +4639,7 @@ width 0pt{\bf References}---{#1}\vskip1sp}}
 \def\lookforD{#1}%
 \ifx\lookforD\xD%
 \expandafter\gdef\csname col\the\tempcounter\endcsname{2}\else
-\expandafter\gdef\csname col\the\tempcounter\endcsname{1}\fi 
+\expandafter\gdef\csname col\the\tempcounter\endcsname{1}\fi
 \global\advance\tempcounter by 1
 \futurelet\next\checkingpreamble}
 
@@ -4705,7 +4705,7 @@ by 1\relax}\ignorespaces}%
   \expandafter\halign\expandafter\@halignto\expandafter\bgroup\@preamble
 }%
 
-%% \rotate 
+%% \rotate
 \newif\ifrotateon
 \def\rotate{\global\rotateontrue}
 
@@ -4727,7 +4727,7 @@ by 1\relax}\ignorespaces}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Gridlines for positioning multiple illustrations in 
+%% Gridlines for positioning multiple illustrations in
 %% one figure environment.
 
 \def\gridline#1{\vskip6pt\hbox to\hsize{#1}\vskip6pt}
@@ -4785,7 +4785,7 @@ editcolor\the\colorcount\endcsname}{\ifnum\colorcount=1{\bf #2}\else
 \ifnum\colorcount=3\underline{#2}\fi\fi\fi}\fi}
 
 \def\collaborationcomment#1#2{\ifturnoffedit\else \colorcount=#1{\textcolor{\expandafter\csname
-editcolor\the\colorcount\endcsname} 
+editcolor\the\colorcount\endcsname}
 {\ifnum\colorcount=1{\bf Collaboration~note: #2}\else
 \ifnum\colorcount=2{\it Collaboration~note: #2}\else
 \ifnum\colorcount=3\underline{Collaboration~note: #2}\fi\fi\fi}}\fi}
@@ -4802,7 +4802,7 @@ editcolor\the\colorcount\endcsname}
 
 \def\watermark#1{\def\thewatermark{\hbox to\textwidth{\vtop to
 1.1\textheight{\vss
-\hskip24pt\rotatebox{60}{\hbox{\bighelv \color{ltgray} 
+\hskip24pt\rotatebox{60}{\hbox{\bighelv \color{ltgray}
 \uppercase{#1}}}\vss}}\hss}}
 \let\thewatermark\empty
 
@@ -4947,7 +4947,7 @@ with #2)}%
 \global\advance\listchangenum by 1\relax
 \expandafter\ifx\csname changenum\the\listchangenum\endcsname\relax
 \else
-\csname changenum\the\listchangenum\endcsname\ 
+\csname changenum\the\listchangenum\endcsname\
 on page \pageref{\the\listchangenum}\ifnumlines, line
 \lineref{\the\listchangenum}\fi.
 \repeat}\fi}
@@ -4972,7 +4972,7 @@ for Collaboration >\string}}}
 \def\xauthor#1{\saveauthor{#1}}
 
 \long\def\eatentry#1{}
-\long\def\almosteatentry#1{\expandafter\gdef\csname 
+\long\def\almosteatentry#1{\expandafter\gdef\csname
 xaffil\the\authorcount\endcsname{#1}}
 
 \def\eatarg#1{}
@@ -5090,7 +5090,7 @@ Affiliations} \let\parsecomma\eatnine
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% From earlier version of AASTeX, for usefulness and 
+%% From earlier version of AASTeX, for usefulness and
 %% backward compatibility, with some requested additions
 
 \let\jnl@style=\rmfamily
@@ -5182,4 +5182,3 @@ Affiliations} \let\parsecomma\eatnine
 }%
 
 \endinput
-

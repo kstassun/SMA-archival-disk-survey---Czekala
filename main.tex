@@ -1,12 +1,9 @@
-% \documentclass[iop,floatfix,numberedappendix,twocolappendix]{emulateapj}
 \documentclass[twocolumn]{aastex6}
-
-% \usepackage[backref,breaklinks,colorlinks,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
-
+% \documentclass{emulateapj}
 
 \newcommand{\radmc}{\texttt{RADMC-3D}}
 \newcommand{\kms}{ \textrm{km s}^{-1} }
-\newcommand{\todo}[1]{ \textcolor{red}{#1}}
+% \newcommand{\todo}[1]{ \textcolor{red}{#1}}
 \newcommand{\vt}{ {\bm \theta}}
 \newcommand{\msun}{M$_\odot$}
 
@@ -45,32 +42,35 @@ Calibration.
 
 Sources are listed in Table~\ref{table:targets}.
 
-\begin{deluxetable*}{lcccc}
+\begin{deluxetable*}{lcccccc}
  \tablecaption{\label{table:targets}Targets}
-  \tablehead{\colhead{{Source}} & \colhead{R.A.} & \colhead{DEC} & \colhead{SPT} & \colhead{Ref}}
+  \tablehead{\colhead{{Source}} & \colhead{R.A.} & \colhead{DEC} & \colhead{SPT} & \colhead{Ref} & \colhead{$d$ prior} & \colhead{Ref}}
  \startdata
-LkH$\alpha$ 330 & 03:45:48.28 & +32:24:11.9 & G1--G5 & \\
-UX Tau A         & 04:30:04.00 & +18:13:49.4 & K1--K5 & \\
-DM Tau          & 04:33:48.72 & +18:10:09.9 & K7--M2 & \\
-AA Tau          & 04:34:55.42 & +24:28:53.2 & K6--M1 & \\
-LkCa 15         & 04:39:17.80 & +22:21:03.5 & K3--K7 & \\
-GM Aur          & 04:55:10.98 & +30:21:59.5 & K2--K5 & \\
-MWC 480         & 04:58:46.26 & +29:50:37.1 & A2--A8 & \\
-MWC 758         & 05:30:27.53 & +25:19:57.1 & A5--F0 & \\
-CQ Tau          & 05:35:58.46 & +24:44:54.2 & F2--F6 & \\
-TW Hya          & 11:01:51.91 & -34:42:17.0 & K6--M3 & \\
-SAO 206462      & 15:15:48.44 & -37:09:16.0 &  F6--G0 & \\
-IM Lup          & 15:56:09.18 & -37:56:06.1 & K7--M2 &  \\
-HD 142527       & 15:56:41.89 & -42:19:23.3 & F2--G0 & \\
-RX J1604.3-2130 & 16:04:21.66 & -21:30:28.4 & K0--K3 & \\
-RX J1615.3-3255 & 16:15:20.23 & -32:55:05.1 & K4--K7 & \\
-RX J1633.9-2442 & 16:33:55.61 & -24:42:05.0 & K5--M0 & \\
-AS 209          & 16:49:15.30 & -14:22:08.6 & K3--K6 & \\
-HD 163296       & 17:56:21.29 & -21:57:21.9 & A0--A4 & \\
-HD 169142       & 18:24:29.78 & -29:46:49.4 & B8--A2 & \\
+LkH$\alpha$ 330 & 03:45:48.28 & +32:24:11.9 & G1--G5 & & $250$ (or $400$?) & \citet{isella13,osterloh95} \\
+UX Tau A         & 04:30:04.00 & +18:13:49.4 & K1--K5 & & $140 \pm 20$ & Assumption \\
+DM Tau          & 04:33:48.72 & +18:10:09.9 & K7--M2 & & $140 \pm 20$ & Assumption \\
+AA Tau          & 04:34:55.42 & +24:28:53.2 & K6--M1 & & $140 \pm 20$ & Assumption \\
+LkCa 15         & 04:39:17.80 & +22:21:03.5 & K3--K7 & & $140 \pm 20$ & Assumption \\
+GM Aur          & 04:55:10.98 & +30:21:59.5 & K2--K5 & & $140 \pm 20$ & Assumption \\
+MWC 480         & 04:58:46.26 & +29:50:37.1 & A2--A8 & & $140 \pm 20$ & Assumption \\
+MWC 758         & 05:30:27.53 & +25:19:57.1 & A5--F0 & & $279 \pm 76$ & \citet{vanleeuwen07} \\
+CQ Tau          & 05:35:58.46 & +24:44:54.2 & F2--F6 & & $113 \pm 24$ & \citet{vanleeuwen07} \\
+TW Hya          & 11:01:51.91 & -34:42:17.0 & K6--M3 & & $54 \pm 6$ & \citet{vanleeuwen07} \\
+SAO 206462      & 15:15:48.44 & -37:09:16.0 &  F6--G0 & & $140 \pm 20$ & Assumption \\
+IM Lup          & 15:56:09.18 & -37:56:06.1 & K7--M2 & & $155\pm 8$ & \citet{lombardi08} \\
+HD 142527       & 15:56:41.89 & -42:19:23.3 & F2--G0 & & $140 \pm 20$ & Assumption \\
+RX J1604.3-2130 & 16:04:21.66 & -21:30:28.4 & K0--K3 & & $145 \pm 2$  & \citet{dezeeuw99} \\
+RX J1615.3-3255 & 16:15:20.23 & -32:55:05.1 & K4--K7 & & $185 \pm$ (ranging 7 - 40) & \citet{makarov07} \\
+RX J1633.9-2442 & 16:33:55.61 & -24:42:05.0 & K5--M0 & & $120 \pm 5$ & \citet{loinard08} \\
+AS 209          & 16:49:15.30 & -14:22:08.6 & K3--K6 & & $130 \pm 50$ & \citet{vanleeuwen07}. \\
+HD 163296       & 17:56:21.29 & -21:57:21.9 & A0--A4 & & $119 \pm 11$ & \citet{vanleeuwen07} \\
+HD 169142       & 18:24:29.78 & -29:46:49.4 & B8--A2 & & $145\pm 43$ & \citet{vanboekel05}\\
  \enddata
- \tablecomments{References are for spectral type.}
+ \tablecomments{References are for spectral type. Second references are for a Gaussian distance prior quoted as $\mu \pm \sigma$ in $\kms$. Asymmetric errorbars have been averaged to become symmetric. If no distance uncertainty estimate could be found in the literature, a 15\% uncertainty is assumed.}
 \end{deluxetable*}
+
+% \apjl
+
 
 
 \section{Methodology}
@@ -121,7 +121,7 @@ HD 169142       & \\
 % UX Tau A  Y 		N
 % DM Tau    Y 		Y 		N
 % AA Tau		N
-% LkCa 15		N
+% LkCa 15		Y 		Y 		Y 		N
 % GM Aur		Y 		Y  		N
 % MWC 480 	Y 		Y 		N
 % MWC 758		Y 		Y 		N
@@ -145,9 +145,10 @@ We present the largest compilation of disk-based dynamical mass measurements to 
 We find that the pre-main sequence models (do not) work for X, Y, and Z.
 
 \acknowledgments
-IC is supported by the NSF Graduate Fellowship and the Smithsonian Institution. \todo{SA acknowledges XX}. \todo{SMA observers of this data?}  Figures \todo{XX} were generated with \texttt{triangle.py} \citep{foreman-mackey14}. This research made extensive use of the Julia programming language \citep{julia12} and Astropy \citep{astropy13}.
+IC is supported by the NSF Graduate Fellowship and the Smithsonian Institution.
+% \todo{SA acknowledges XX}. \todo{SMA observers of this data?}  Figures \todo{XX} were generated with \texttt{triangle.py} \citep{foreman-mackey14}. This research made extensive use of the Julia programming language \citep{julia12} and Astropy \citep{astropy13}.
 
-\bibliographystyle{apj}
+\bibliographystyle{apj.bst}
 \bibliography{master.bib}
 
 \appendix
@@ -155,6 +156,15 @@ IC is supported by the NSF Graduate Fellowship and the Smithsonian Institution. 
 \section{Remarks on individual sources}
 
 \subsection{LkH$\alpha$ 330}
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{LkHa330.pdf}
+  \figcaption{
+  Model, data, and residual channel maps for LkHa~330. Negative residuals are denoted by dashed contours.
+  \label{fig:LkHa330}}
+  \end{center}
+\end{figure*}
+
 \citet{isella13} find azimuthal asymmetry in the dust ring. Dynamical interactions by unseen low mass planets.
 
 % SPT = G3.
@@ -165,6 +175,15 @@ IC is supported by the NSF Graduate Fellowship and the Smithsonian Institution. 
 % Dust cavity of 40 AU.
 
 \subsection{UX Tau A}
+
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{UXTauA.pdf}
+  \figcaption{
+  Same as above, for UX~Tau~A.
+  \label{fig:UXTauA}}
+  \end{center}
+\end{figure*}
 
 \citep{espaillat07}.
 
@@ -181,6 +200,15 @@ Previous measurements.
 \end{figure*}
 
 \subsection{AA Tau}
+
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{AATau.pdf}
+  \figcaption{
+  Same as above, for AA~Tau
+  \label{fig:AATau}}
+  \end{center}
+\end{figure*}
 
 \subsection{LkCa 15}
 Previous measurements. Transition disk.
@@ -223,17 +251,83 @@ Previous measurements.
 
 \subsection{MWC 758}
 
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{MWC758.pdf}
+  \figcaption{
+  Same as above, for MWC~758.
+  \label{fig:MWC758}}
+  \end{center}
+\end{figure*}
+
 \subsection{CQ Tau}
+% Parallax from van Leeuwen
+% 8.85 [1.80]
+
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{CQTau.pdf}
+  \figcaption{
+  Same as above, for CQ~Tau.
+  \label{fig:CQTau}}
+  \end{center}
+\end{figure*}
 
 \subsection{TW Hya}
 
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{TWHya.pdf}
+  \figcaption{
+  Same as above, for TW~Hya.
+  \label{fig:TWHya}}
+  \end{center}
+\end{figure*}
+
 \subsection{SAO 206462}
+
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{SAO206462.pdf}
+  \figcaption{
+  Same as above, for SAO~206462.
+  \label{fig:SAO206462}}
+  \end{center}
+\end{figure*}
 
 \subsection{IM Lup}
 
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{IMLup.pdf}
+  \figcaption{
+  Same as above, for IM~Lup.
+  \label{fig:IMLup}}
+  \end{center}
+\end{figure*}
+
 \subsection{HD 142527}
 
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{HD142527.pdf}
+  \figcaption{
+  Same as above, for HD~142527.
+  \label{fig:HD142527}}
+  \end{center}
+\end{figure*}
+
 \subsection{RX J1604.3-2130}
+
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{RXJ1604.pdf}
+  \figcaption{
+  Same as above, for RX J1604.3-2130.
+  \label{fig:RXJ1604}}
+  \end{center}
+\end{figure*}
+
 \citep{vandermarel15} notes that this is viewed almost face-on (Mathews 12, Zhang 14). PA = 80, i = 10, vsrc = 4.7 km/s.
 
 Dahm 08, Mathews 12, Carpenter 14
@@ -247,6 +341,15 @@ Dust shadowing by an inner disk. A ``double drop'' going on at two radii.
 Gas density drop at 30 AU.
 
 \subsection{RX J1615.3-3255}
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{RXJ1615.pdf}
+  \figcaption{
+  Same as above, for RX J1615.3-3255.
+  \label{fig:RXJ1615}}
+  \end{center}
+\end{figure*}
+
 \citep{vandermarel15} derives PA = 153, i = 45, vsrc = 4.6 km/s. Says no dust cavity visible. Andrews 11 has cavity of 30 AU.
 
 Large range of permissible CO densities inside gap before CO makes optically thick-thin transition.
@@ -261,11 +364,53 @@ d = 185 pc.
 
 \subsection{RX J1633.9-2442}
 
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{RXJ1633.pdf}
+  \figcaption{
+  Same as above, for RX J1633.9-2442.
+  \label{fig:RXJ1633}}
+  \end{center}
+\end{figure*}
+
 \subsection{AS 209}
+
+% van Leeuwen 07 parallax
+% 7.63 [2.91]
+
+% 95
+% 131
+% 212
+
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{AS209.pdf}
+  \figcaption{
+  Same as above, for AS~209.
+  \label{fig:AS209}}
+  \end{center}
+\end{figure*}
 
 \subsection{HD 163296}
 
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{HD163296.pdf}
+  \figcaption{
+  Same as above, for HD~163296.
+  \label{fig:HD163296}}
+  \end{center}
+\end{figure*}
+
 \subsection{HD 169142}
 
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft]{HD169142.pdf}
+  \figcaption{
+  Same as above, for HD~169142.
+  \label{fig:HD169142}}
+  \end{center}
+\end{figure*}
 
 \end{document}
