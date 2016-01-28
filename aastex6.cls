@@ -1265,7 +1265,7 @@ revtex4-1.cls^^J^^J}\stop
 \newcommand\aj{\ref@jnl{AJ}}%        % Astronomical Journal
 \newcommand\araa{\ref@jnl{ARA\&A}}%  % Annual Review of Astron and Astrophys
 \renewcommand\apj{\ref@jnl{ApJ}}%    % Astrophysical Journal
-\newcommand\apjl{\ref@jnl{ApJLetters}}%     % Astrophysical Journal, Letters
+\newcommand\apjl{\ref@jnl{ApJL}}     % Astrophysical Journal, Letters
 \newcommand\apjs{\ref@jnl{ApJS}}%    % Astrophysical Journal, Supplement
 \renewcommand\ao{\ref@jnl{Appl.~Opt.}}%   % Applied Optics
 \newcommand\apss{\ref@jnl{Ap\&SS}}%  % Astrophysics and Space Science

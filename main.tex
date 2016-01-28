@@ -1,9 +1,8 @@
 \documentclass[twocolumn]{aastex6}
-% \documentclass{emulateapj}
 
 \newcommand{\radmc}{\texttt{RADMC-3D}}
 \newcommand{\kms}{ \textrm{km s}^{-1} }
-% \newcommand{\todo}[1]{ \textcolor{red}{#1}}
+\newcommand{\todo}[1]{ \textcolor{red}{#1}}
 \newcommand{\vt}{ {\bm \theta}}
 \newcommand{\msun}{M$_\odot$}
 
@@ -42,31 +41,31 @@ Calibration.
 
 Sources are listed in Table~\ref{table:targets}.
 
-\begin{deluxetable*}{lcccccc}
+\begin{deluxetable*}{lccccccc}
  \tablecaption{\label{table:targets}Targets}
-  \tablehead{\colhead{{Source}} & \colhead{R.A.} & \colhead{DEC} & \colhead{SPT} & \colhead{Ref} & \colhead{$d$ prior} & \colhead{Ref}}
+  \tablehead{\colhead{{Source}} & \colhead{R.A.} & \colhead{DEC} & \colhead{SPT} & \colhead{Ref} & \colhead{${}^{12}$CO $J$=} & \colhead{$d$ prior} & \colhead{Ref}}
  \startdata
-LkH$\alpha$ 330 & 03:45:48.28 & +32:24:11.9 & G1--G5 & & $250$ (or $400$?) & \citet{isella13,osterloh95} \\
-UX Tau A         & 04:30:04.00 & +18:13:49.4 & K1--K5 & & $140 \pm 20$ & Assumption \\
-DM Tau          & 04:33:48.72 & +18:10:09.9 & K7--M2 & & $140 \pm 20$ & Assumption \\
-AA Tau          & 04:34:55.42 & +24:28:53.2 & K6--M1 & & $140 \pm 20$ & Assumption \\
-LkCa 15         & 04:39:17.80 & +22:21:03.5 & K3--K7 & & $140 \pm 20$ & Assumption \\
-GM Aur          & 04:55:10.98 & +30:21:59.5 & K2--K5 & & $140 \pm 20$ & Assumption \\
-MWC 480         & 04:58:46.26 & +29:50:37.1 & A2--A8 & & $140 \pm 20$ & Assumption \\
-MWC 758         & 05:30:27.53 & +25:19:57.1 & A5--F0 & & $279 \pm 76$ & \citet{vanleeuwen07} \\
-CQ Tau          & 05:35:58.46 & +24:44:54.2 & F2--F6 & & $113 \pm 24$ & \citet{vanleeuwen07} \\
-TW Hya          & 11:01:51.91 & -34:42:17.0 & K6--M3 & & $54 \pm 6$ & \citet{vanleeuwen07} \\
-SAO 206462      & 15:15:48.44 & -37:09:16.0 &  F6--G0 & & $140 \pm 20$ & Assumption \\
-IM Lup          & 15:56:09.18 & -37:56:06.1 & K7--M2 & & $155\pm 8$ & \citet{lombardi08} \\
-HD 142527       & 15:56:41.89 & -42:19:23.3 & F2--G0 & & $140 \pm 20$ & Assumption \\
-RX J1604.3-2130 & 16:04:21.66 & -21:30:28.4 & K0--K3 & & $145 \pm 2$  & \citet{dezeeuw99} \\
-RX J1615.3-3255 & 16:15:20.23 & -32:55:05.1 & K4--K7 & & $185 \pm$ (ranging 7 - 40) & \citet{makarov07} \\
-RX J1633.9-2442 & 16:33:55.61 & -24:42:05.0 & K5--M0 & & $120 \pm 5$ & \citet{loinard08} \\
-AS 209          & 16:49:15.30 & -14:22:08.6 & K3--K6 & & $130 \pm 50$ & \citet{vanleeuwen07}. \\
-HD 163296       & 17:56:21.29 & -21:57:21.9 & A0--A4 & & $119 \pm 11$ & \citet{vanleeuwen07} \\
-HD 169142       & 18:24:29.78 & -29:46:49.4 & B8--A2 & & $145\pm 43$ & \citet{vanboekel05}\\
+LkH$\alpha$ 330 & 03:45:48.28 & +32:24:11.9 & G1--G5 & & 3-2  & $250$ (or $400$?) & \citet{isella13,osterloh95} \\
+UX Tau A         & 04:30:04.00 & +18:13:49.4 & K1--K5 & & 3-2 & $145 \pm 20$ & \citet{torres10} \\
+DM Tau          & 04:33:48.72 & +18:10:09.9 & K7--M2 & & 2-1 & $145 \pm 20$ & \citet{torres10} \\
+AA Tau          & 04:34:55.42 & +24:28:53.2 & K6--M1 & & & $145 \pm 20$ & \citet{torres10} \\
+LkCa 15         & 04:39:17.80 & +22:21:03.5 & K3--K7 & & 3-2 & $145 \pm 20$ & \citet{torres10} \\
+GM Aur          & 04:55:10.98 & +30:21:59.5 & K2--K5 & & 3-2 & $145 \pm 20$ & \citet{torres10} \\
+MWC 480         & 04:58:46.26 & +29:50:37.1 & A2--A8 & & 2-1 & $145 \pm 20$ & \citet{torres10} \\
+MWC 758         & 05:30:27.53 & +25:19:57.1 & A5--F0 & & 3-2 & $279 \pm 76$ & \citet{vanleeuwen07} \\
+CQ Tau          & 05:35:58.46 & +24:44:54.2 & F2--F6 & & & $113 \pm 24$ & \citet{vanleeuwen07} \\
+TW Hya          & 11:01:51.91 & -34:42:17.0 & K6--M3 & & 3-2 & $54 \pm 6$ & \citet{vanleeuwen07} \\
+SAO 206462      & 15:15:48.44 & -37:09:16.0 &  F6--G0 & & & $145 \pm 20$ & \citet{torres10} \\
+IM Lup          & 15:56:09.18 & -37:56:06.1 & K7--M2 & & 2-1 & $155\pm 8$ & \citet{lombardi08} \\
+HD 142527       & 15:56:41.89 & -42:19:23.3 & F2--G0 & & & $145 \pm 20$ & \citet{torres10} \\
+RX J1604.3-2130 & 16:04:21.66 & -21:30:28.4 & K0--K3 & & & $145 \pm 2$  & \citet{dezeeuw99} \\
+RX J1615.3-3255 & 16:15:20.23 & -32:55:05.1 & K4--K7 & & 3-2 & $185 \pm 25$ & \citet{makarov07} \\
+RX J1633.9-2442 & 16:33:55.61 & -24:42:05.0 & K5--M0 & & & $120 \pm 5$ & \citet{loinard08} \\
+AS 209          & 16:49:15.30 & -14:22:08.6 & K3--K6 & & & $130 \pm 50$ & \citet{vanleeuwen07} \\
+HD 163296       & 17:56:21.29 & -21:57:21.9 & A0--A4 & & & $119 \pm 11$ & \citet{vanleeuwen07} \\
+HD 169142       & 18:24:29.78 & -29:46:49.4 & B8--A2 & & 2-1 & $145\pm 43$ & \citet{vanboekel05}\\
  \enddata
- \tablecomments{References are for spectral type. Second references are for a Gaussian distance prior quoted as $\mu \pm \sigma$ in $\kms$. Asymmetric errorbars have been averaged to become symmetric. If no distance uncertainty estimate could be found in the literature, a 15\% uncertainty is assumed.}
+ \tablecomments{References in column 5 are for spectral type. References in column 7 are for a Gaussian distance prior quoted as $\mu \pm \sigma$ pc. Asymmetric error bars have been averaged to become symmetric for simplicity. Taurus distance priors are designed to encapsulate the full range of possible distances to sources in the Taurus cloud.}
 \end{deluxetable*}
 
 % \apjl
@@ -117,8 +116,8 @@ HD 169142       & \\
 
 
 % Source  	Data? HDF5?	Fit?	Chmaps?
-% LkHa 330 	Y 		N
-% UX Tau A  Y 		N
+% LkHa 330 	Y 		Y
+% UX Tau A  Y 		Y
 % DM Tau    Y 		Y 		N
 % AA Tau		N
 % LkCa 15		Y 		Y 		Y 		N
@@ -135,7 +134,7 @@ HD 169142       & \\
 % RX J1633 	N
 % AS 209 		N
 % HD 163296 N
-% HD 169142 Y 		N
+% HD 169142 Y 		Y
 
 
 \section{Conclusions}
@@ -145,10 +144,9 @@ We present the largest compilation of disk-based dynamical mass measurements to 
 We find that the pre-main sequence models (do not) work for X, Y, and Z.
 
 \acknowledgments
-IC is supported by the NSF Graduate Fellowship and the Smithsonian Institution.
-% \todo{SA acknowledges XX}. \todo{SMA observers of this data?}  Figures \todo{XX} were generated with \texttt{triangle.py} \citep{foreman-mackey14}. This research made extensive use of the Julia programming language \citep{julia12} and Astropy \citep{astropy13}.
+IC is supported by the NSF Graduate Fellowship and the Smithsonian Institution. \todo{SA acknowledges XX}. \todo{SMA observers of this data?}  Figures \todo{XX} were generated with \texttt{triangle.py} \citep{foreman-mackey14}. This research made extensive use of the Julia programming language \citep{julia12} and Astropy \citep{astropy13}.
 
-\bibliographystyle{apj.bst}
+\bibliographystyle{yahapj.bst}
 \bibliography{master.bib}
 
 \appendix
@@ -186,6 +184,12 @@ IC is supported by the NSF Graduate Fellowship and the Smithsonian Institution.
 \end{figure*}
 
 \citep{espaillat07}.
+
+\citet{tanii12} say west side is nearest, so we use negative inclination.
+
+% i = 46 +/- 2
+% west side nearest
+% no evidence of a gap up to 20 AU.
 
 \subsection{DM Tau}
 Previous measurements.
@@ -412,5 +416,7 @@ d = 185 pc.
   \label{fig:HD169142}}
   \end{center}
 \end{figure*}
+
+Appears to be a definite inner cavity in the gas.
 
 \end{document}
