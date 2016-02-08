@@ -21,7 +21,7 @@
 
 
 \begin{abstract}
-We present a survey of precision mass measurements of a sample of 20 pre-main sequence Herbig Ae/Be and T Tauri stars. We use resolved observations with the Submillimeter Array of the Keplerian rotation of CO gas to make a precise, \emph{dynamical} mass measurement of a sample of \emph{single} stars.
+We present a survey of precision mass measurements of a sample of 19 pre-main sequence Herbig Ae/Be and T Tauri stars. We use resolved observations with the Submillimeter Array of the Keplerian rotation of CO gas to make a precise, \emph{dynamical} mass measurement of a sample of \emph{single} stars.
 \end{abstract}
 
 
@@ -45,7 +45,7 @@ Sources are listed in Table~\ref{table:targets}.
  \tablecaption{\label{table:targets}Targets}
   \tablehead{\colhead{{Source}} & \colhead{R.A.} & \colhead{DEC} & \colhead{SPT} & \colhead{Ref} & \colhead{${}^{12}$CO $J$=} & \colhead{$d$ prior} & \colhead{Ref}}
  \startdata
-LkH$\alpha$ 330 & 03:45:48.28 & +32:24:11.9 & G1--G5 & & 3-2  & $250$ (or $400$?) & \citet{isella13,osterloh95} \\
+LkH$\alpha$ 330 & 03:45:48.28 & +32:24:11.9 & G1--G5 & & 3-2  & $315 \pm 32$ & \citet{schlafly14} \\
 UX Tau A         & 04:30:04.00 & +18:13:49.4 & K1--K5 & & 3-2 & $145 \pm 20$ & \citet{torres10} \\
 DM Tau          & 04:33:48.72 & +18:10:09.9 & K7--M2 & & 2-1 & $145 \pm 20$ & \citet{torres10} \\
 AA Tau          & 04:34:55.42 & +24:28:53.2 & K6--M1 & & & $145 \pm 20$ & \citet{torres10} \\
@@ -68,13 +68,12 @@ HD 169142       & 18:24:29.78 & -29:46:49.4 & B8--A2 & & 2-1 & $145\pm 43$ & \ci
  \tablecomments{References in column 5 are for spectral type. References in column 7 are for a Gaussian distance prior quoted as $\mu \pm \sigma$ pc. Asymmetric error bars have been averaged to become symmetric for simplicity. Taurus distance priors are designed to encapsulate the full range of possible distances to sources in the Taurus cloud.}
 \end{deluxetable*}
 
-% \apjl
-
-
 
 \section{Methodology}
 
 We use the dynamical mass technique described in \citet{czekala15a}.
+
+% Two dimensional, axi-symmetric convention.
 
 Inclination convention. Position angle convention. Notes on geometrical prior.
 
@@ -91,7 +90,7 @@ We present our results in Table~\ref{table:masses}.
   \tablehead{\colhead{{Source}} & \colhead{$M_\ast$} & \colhead{$i_d$} & \colhead{$r_c$} & \colhead{$r_\textrm{cav}$} & \colhead{$\log M_\textrm{CO}$} & \colhead{$T_{10}$} & \colhead{$q$} & \colhead{$\xi$} & \colhead{P.A.} &  \colhead{$d$} & \colhead{$M_\ast / d$} \\
 	& \colhead{[$M_\odot$]} & \colhead{[${}^\circ$]} & \colhead{[AU]} & \colhead{[AU]} & \colhead{[$M_\odot$]} & \colhead{[K]} & & \colhead{ [$\kms$]} & \colhead{[${}^\circ$]} & \colhead{[pc]} & \colhead{$[M_\odot / \textrm{pc}]$}}
  \startdata
-LkH$\alpha$ 330 &  \\
+LkH$\alpha$ 330 & \tablenotemark{a}  \\
 UX Tau A         &\\
 DM Tau          & \\
 AA Tau          & \\
@@ -111,31 +110,18 @@ AS 209          & \\
 HD 163296       & \\
 HD 169142       & \\
  \enddata
+ \tablenotetext{a}{Unknown if $0\degr \leq i_d \leq 90\degr$ or $90\degr \leq i_d \leq 180\degr$ from external constraints or disk modeling.}
  \tablecomments{Dynamical masses.}
 \end{deluxetable*}
 
-
-% Source  	Data? HDF5?	Fit?	Chmaps?
-% LkHa 330 	Y 		Y
-% UX Tau A  Y 		Y
-% DM Tau    Y 		Y 		N
-% AA Tau		N
-% LkCa 15		Y 		Y 		Y 		N
-% GM Aur		Y 		Y  		N
-% MWC 480 	Y 		Y 		N
-% MWC 758		Y 		Y 		N
-% CQ Tau 		N
-% TW Hya 		Y 		N
-% SAO206462 N
-% IM Lup 		Y 		N
-% HD 142527 N
-% RX J1604  N
-% RX J1615  Y 		Y 		N
-% RX J1633 	N
-% AS 209 		N
-% HD 163296 N
-% HD 169142 Y 		Y
-
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft,width=0.95\textwidth,height=7in]{posterior_example.pdf}
+  \figcaption{
+  A giant, 12 parameter figure showing the full parameter space. Explaining the various parameters and how they are connected.
+  \label{fig:posterior}}
+  \end{center}
+\end{figure*}
 
 \section{Conclusions}
 
@@ -144,7 +130,7 @@ We present the largest compilation of disk-based dynamical mass measurements to 
 We find that the pre-main sequence models (do not) work for X, Y, and Z.
 
 \acknowledgments
-IC is supported by the NSF Graduate Fellowship and the Smithsonian Institution. \todo{SA acknowledges XX}. \todo{SMA observers of this data?}  Figures \todo{XX} were generated with \texttt{triangle.py} \citep{foreman-mackey14}. This research made extensive use of the Julia programming language \citep{julia12} and Astropy \citep{astropy13}.
+IC is supported by the Smithsonian Institution. The authors would like to acknowledge Adam Kraus for helpful discussions regarding LkH$\alpha$~330. \todo{SA acknowledges XX}. \todo{SMA observers of this data?}  Figures \todo{XX} were generated with \texttt{triangle.py} \citep{foreman-mackey14}. This research made extensive use of the Julia programming language \citep{julia12} and Astropy \citep{astropy13}.
 
 \bibliographystyle{yahapj.bst}
 \bibliography{master.bib}
@@ -156,15 +142,20 @@ IC is supported by the NSF Graduate Fellowship and the Smithsonian Institution. 
 \subsection{LkH$\alpha$ 330}
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{LkHa330.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{LkHa330.pdf}
   \figcaption{
-  Model, data, and residual channel maps for LkHa~330. Negative residuals are denoted by dashed contours.
+  Model, data, and residual channel maps for LkHa~330. Contours are every 3 sigma. Negative residuals are denoted by dashed contours. Color bar labels intensity in multiples of the RMS as well as Jy/beam.
   \label{fig:LkHa330}}
   \end{center}
 \end{figure*}
 
 \citet{isella13} find azimuthal asymmetry in the dust ring. Dynamical interactions by unseen low mass planets.
+\citep{andrews11a} find the following parameters:
+\citep{pontoppidan11} use CRIRES. Shows narrow, blended peak characteristic of a face-on disk at 9 kms LSR. Assuming M=2.5, they derive i = 12, however these are clearly degenerate. For M = 1.6, 17 degrees. If our results are funky, this might be nice to combine as well.
 
+PA=218. CO v = 1 - 0.
+
+% Andrews et al. 2011 determine the following parameters from dust + photometry
 % SPT = G3.
 % dpc = 250 pre
 % M = 2.5 sun.
@@ -172,11 +163,15 @@ IC is supported by the NSF Graduate Fellowship and the Smithsonian Institution. 
 % r > 130 AU.
 % Dust cavity of 40 AU.
 
+% Strangely, gas modeling does NOT support this mass and inclination combination.
+
 \subsection{UX Tau A}
+
+Although it looks good in the channel maps, this fit is clearly wrong. The disk does not contain $10^5 M_odot$ of material.
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{UXTauA.pdf}
+  \includegraphics{UXTauA.pdf}
   \figcaption{
   Same as above, for UX~Tau~A.
   \label{fig:UXTauA}}
@@ -207,7 +202,7 @@ Previous measurements.
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{AATau.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{AATau.pdf}
   \figcaption{
   Same as above, for AA~Tau
   \label{fig:AATau}}
@@ -257,7 +252,7 @@ Previous measurements.
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{MWC758.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{MWC758.pdf}
   \figcaption{
   Same as above, for MWC~758.
   \label{fig:MWC758}}
@@ -270,7 +265,7 @@ Previous measurements.
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{CQTau.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{CQTau.pdf}
   \figcaption{
   Same as above, for CQ~Tau.
   \label{fig:CQTau}}
@@ -281,7 +276,7 @@ Previous measurements.
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{TWHya.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{TWHya.pdf}
   \figcaption{
   Same as above, for TW~Hya.
   \label{fig:TWHya}}
@@ -292,7 +287,7 @@ Previous measurements.
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{SAO206462.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{SAO206462.pdf}
   \figcaption{
   Same as above, for SAO~206462.
   \label{fig:SAO206462}}
@@ -301,9 +296,16 @@ Previous measurements.
 
 \subsection{IM Lup}
 
+Galli and Bertout quote the SPM4 (Girard et al 2011) catalog for a parallax of 5.3 +/- 1.4 milliarcseconds.
+
+I convert this to 188.7 +/-
+149.3 to 256.4
+
+- 40pc + 67 pc
+
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{IMLup.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{IMLup.pdf}
   \figcaption{
   Same as above, for IM~Lup.
   \label{fig:IMLup}}
@@ -314,7 +316,7 @@ Previous measurements.
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{HD142527.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{HD142527.pdf}
   \figcaption{
   Same as above, for HD~142527.
   \label{fig:HD142527}}
@@ -325,7 +327,7 @@ Previous measurements.
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{RXJ1604.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{RXJ1604.pdf}
   \figcaption{
   Same as above, for RX J1604.3-2130.
   \label{fig:RXJ1604}}
@@ -347,7 +349,7 @@ Gas density drop at 30 AU.
 \subsection{RX J1615.3-3255}
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{RXJ1615.pdf}
+  \includegraphics{RXJ1615.pdf}
   \figcaption{
   Same as above, for RX J1615.3-3255.
   \label{fig:RXJ1615}}
@@ -370,7 +372,7 @@ d = 185 pc.
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{RXJ1633.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{RXJ1633.pdf}
   \figcaption{
   Same as above, for RX J1633.9-2442.
   \label{fig:RXJ1633}}
@@ -388,7 +390,7 @@ d = 185 pc.
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{AS209.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{AS209.pdf}
   \figcaption{
   Same as above, for AS~209.
   \label{fig:AS209}}
@@ -399,7 +401,7 @@ d = 185 pc.
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{HD163296.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{HD163296.pdf}
   \figcaption{
   Same as above, for HD~163296.
   \label{fig:HD163296}}
@@ -410,7 +412,7 @@ d = 185 pc.
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft]{HD169142.pdf}
+  \includegraphics[draft, width=0.95\textwidth, height=5in]{HD169142.pdf}
   \figcaption{
   Same as above, for HD~169142.
   \label{fig:HD169142}}
