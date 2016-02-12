@@ -19,9 +19,10 @@
 \altaffiltext{3}{Department of Physics and Astronomy, Vanderbilt University, Nashville, TN 37235}
 \altaffiltext{4}{Department of Physics, Fisk University, Nashville, TN 37208}
 
-
 \begin{abstract}
-We present a survey of precision mass measurements of a sample of 19 pre-main sequence Herbig Ae/Be and T Tauri stars. We use resolved observations with the Submillimeter Array of the Keplerian rotation of CO gas to make a precise, \emph{dynamical} mass measurement of a sample of \emph{single} stars.
+We present a survey of precision mass measurements for a sample of 19 well known Herbig Ae/Be and T Tauri stars. We use resolved observations with the Submillimeter Array of the Keplerian rotation of CO gas to make a precise, \emph{dynamical} mass measurement of a sample of \emph{single} stars, with 10 sources to a precision of better than 10\%. We report distance-independent quantity $M_\ast/d$ to better precision than 10\%, with distance being the main source of uncertainty, for which \emph{GAIA} will shortly ameliorate.
+
+We use these measurements, coupled with constraints on effective temperature and luminosity, to compare to pre-main sequence model predictions in a distance-independent manner, showing that while the models do well across a variety of spectral types, there are often consistent systematic disagreements (maybe).
 \end{abstract}
 
 
@@ -31,13 +32,18 @@ Dynamical masses for all the SMA data. These sources have long been studied and 
 
 Other important compilations include Hillenbrand and White, Guilloteau, Simon, Dutrey.
 
+% Paragraph about the ability of the dynamical mass technique to measure the masses of stars.
+% Tomographic reconstruction of the velocity field.
+% Note the success of our groups measurements for young binaries.
+% Ultimate promise is to apply this to a large measurement of single stars.
+% The ultimate goal is large programs with ALMA, but there are a number of disks that have been observed with SMA for which we can already do this measurement.
 We now have a technique available that delivers accurate masses \citep{rosenfeld12b, czekala15a, czekala16}.
 
 \section{Data and Reduction}
 
 SMA programs from which all the data was taken.
 
-Calibration.
+Calibration. MIRIAD software. Visibilities were exported and modeled in the UV plane.
 
 Sources are listed in Table~\ref{table:targets}.
 
@@ -65,19 +71,60 @@ AS 209          & 16:49:15.30 & -14:22:08.6 & K3--K6 & & & $130 \pm 50$ & \citet
 HD 163296       & 17:56:21.29 & -21:57:21.9 & A0--A4 & & & $119 \pm 11$ & \citet{vanleeuwen07} \\
 HD 169142       & 18:24:29.78 & -29:46:49.4 & B8--A2 & & 2-1 & $145\pm 43$ & \citet{vanboekel05}\\
  \enddata
- \tablecomments{References in column 5 are for spectral type. References in column 7 are for a Gaussian distance prior quoted as $\mu \pm \sigma$ pc. Asymmetric error bars have been averaged to become symmetric for simplicity. Taurus distance priors are designed to encapsulate the full range of possible distances to sources in the Taurus cloud.}
+ \tablecomments{References are for spectral type and distance, respectively. Gaussian distance priors are quoted as $\mu \pm \sigma$ pc, whereby asymmetric error bars were averaged to become symmetric for simplicity.}
 \end{deluxetable*}
-
 
 \section{Methodology}
 
-We use the dynamical mass technique described in \citet{czekala15a}.
+% Interferometers sample the Fourier transform of the sky brightness of the source. By forward modeling this kinematic fingerprint, we can infer parameters of the disk and precisely constrain the central stellar mass.
+
+% Kinematic fingerprint of a molecular transition like carbon monoxide (12CO). Line transfers like CO 2-1 and 3-2, though in practice this technique is broadly applicable to a range of molecules, isotopologues, and transitions, as long as these are bright enough and distant enough in the disk to be spatially resolved.
+
+% We use the dynamical mass technique described in \citet{czekala15a}.
+
+% Explain how we forward model the visibilities.
+
+% First, the goal is to create a model of the sky brightness using a physical model of the disk.
+First, create a 2D-axisymmetric model of the disk structure and velocity field, the disk model is specified in cylindrical coordinates. This is informed by stellar mass $M_\ast$, a power law temperature distribution with normalization at 10 AU $T_{10}$ and gradient $q$.
+
+Vertically isothermal disk.
+
+\begin{equation}
+	T(r) = T_{10} \left ( \frac{r}{\textrm{10 AU}}\right)^{-q}
+\end{equation}
+
+\citet{rosenfeld13a} have shown that terms like vertical geometry, disk-self gravity, and radial pressure gradient amount to small contributions on the mass inference.
+
+Surface density profile, set with $\gamma = 1$. Normalized by $M_\textrm{disk}$.
+
+\begin{equation}
+\Sigma(r) = \Sigma_c \left (\frac{r}{r_c} \right)^{- \gamma} \exp \left[ - \left(\frac{r}{r_c} \right)^{2 - \gamma} \right]
+\end{equation}
+
+The disk is assumed to be in hydrostatic equilibrium, and so the gas density structure is given by
+\begin{equation}
+\rho(r, z) = \frac{\Sigma(r)}{\sqrt{2 \pi} H} \exp \left [- \frac{z^2}{2 H^2} \right]
+\end{equation}
+
+where the scale height $H$ is given by
+
+
+Then, this structure is ray-traced using the radiative transfer program \texttt{RADMC-3D}.
+
+
+% Note distance uncertainty folds in linearly
+% Note that the stellar mass is generally uncorrelated with other parameters.
+
+
+
 
 % Two dimensional, axi-symmetric convention.
 
 Inclination convention. Position angle convention. Notes on geometrical prior.
 
 We use an isothermal disk structure model, with an inner cavity that allows for depletion. And a floating inner radius.
+
+\footnote{We have released this dynamical mass code as a publicly available, open-source (under an MIT liscence) package written in the \texttt{Julia} language, available at \url{http/HERE.com}.}
 
 \section{Results}
 
@@ -110,8 +157,8 @@ AS 209          & \\
 HD 163296       & \\
 HD 169142       & \\
  \enddata
- \tablenotetext{a}{Unknown if $0\degr \leq i_d \leq 90\degr$ or $90\degr \leq i_d \leq 180\degr$ from external constraints or disk modeling.}
- \tablecomments{Dynamical masses.}
+ \tablenotetext{a}{From lack of sufficient sensitivity in the channels at the systemic velocity or any external constraints, it is unknown whether the absolute orientation of the disk inclination vector is pointed towards ($0\degr \leq i_d \leq 90\degr$) or away from ($90\degr \leq i_d \leq 180\degr$) the observer.}
+ \tablecomments{Full posterior and likelihood samples are provided for download \todo{at figshare HERE.}}
 \end{deluxetable*}
 
 \begin{figure*}[htb]
@@ -130,7 +177,7 @@ We present the largest compilation of disk-based dynamical mass measurements to 
 We find that the pre-main sequence models (do not) work for X, Y, and Z.
 
 \acknowledgments
-IC is supported by the Smithsonian Institution. The authors would like to acknowledge Adam Kraus for helpful discussions regarding LkH$\alpha$~330. \todo{SA acknowledges XX}. \todo{SMA observers of this data?}  Figures \todo{XX} were generated with \texttt{triangle.py} \citep{foreman-mackey14}. This research made extensive use of the Julia programming language \citep{julia12} and Astropy \citep{astropy13}.
+IC is supported by the Smithsonian Institution. The authors would like to acknowledge Adam Kraus for helpful discussions regarding the distance to LkH$\alpha$~330. \todo{SA acknowledges XX}. \todo{SMA observers of this data?}  Figures \todo{XX} were generated with \texttt{triangle.py} \citep{foreman-mackey14}. This research made extensive use of the Julia programming language \citep{julia12} and Astropy \citep{astropy13}.
 
 \bibliographystyle{yahapj.bst}
 \bibliography{master.bib}
