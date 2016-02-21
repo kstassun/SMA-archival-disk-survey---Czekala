@@ -109,13 +109,11 @@ The disk is assumed to be in hydrostatic equilibrium, and so the gas density str
 where the scale height $H$ is given by
 
 
-Then, this structure is ray-traced using the radiative transfer program \texttt{RADMC-3D}.
+Then, this structure is ray-traced using the radiative transfer program \texttt{RADMC-3D}, whereby disk orientation effects such as disk inclination $i_d$ and position angle $\varphi$ are taken into account. Disk inclination is defined using the orientation of the disk angular momentum vector from the line of sight to the observer. 0\degr is a face-on disk with the vector pointed towards the observer, 90\degr is an edge-on disk, and 180\degr is a face-on disk with the vector pointed away from the observer. We enforce a geometrical prior on the inclination of the disk, $p(i_d) =  \sin(i_d)/2$, designed to account for the fact that a disk is more likely to be observed edge-on than face-on.
 
+Likewise, position angle is defined using the projection of the disk angular momentum vector on the plane of the sky, in degrees running East of North (counter clockwise on the sky).
 
-% Note distance uncertainty folds in linearly
-% Note that the stellar mass is generally uncorrelated with other parameters.
-
-
+The angular scale of the disk are set according to the distance $d$ to the source, which generally factors into a linear dependence on the mass uncertainty. Stellar mass is generally uncorrelated with other parameters. With corrections for phase center offsets $\mu_\alpha$ and $\mu_\delta$.
 
 
 % Two dimensional, axi-symmetric convention.
@@ -124,7 +122,10 @@ Inclination convention. Position angle convention. Notes on geometrical prior.
 
 We use an isothermal disk structure model, with an inner cavity that allows for depletion. And a floating inner radius.
 
-\footnote{We have released this dynamical mass code as a publicly available, open-source (under an MIT liscence) package written in the \texttt{Julia} language, available at \url{http/HERE.com}.}
+
+Explore this posterior with MCMC on a cluster. After running multiple chains to asses convergence, burn-in is removed and posteriors are calculated. A full example of the 12-dimensional posterior is shown in Figure~\ref{fig:posterior}.
+
+\footnote{We have released this dynamical mass code as a publicly available, open-source (under an MIT liscence) package written in the \texttt{Julia} language, available at \url{https://github.com/iancze/DiskJockey}}
 
 \section{Results}
 
@@ -132,30 +133,49 @@ We present our results in Table~\ref{table:masses}.
 
 % I think an interesting figure for this section would be to plot a representative set of PMS tracks (Dartmouth), then plot the existing disk-based sources in transparent blue, plot the existing eclipsing binary sources in transparent red, then plot our updated disk based measurements in a bold blue. Below, we will have a histogram showing where these have been filled in.
 
-\begin{deluxetable*}{lccccccccccccc}
+\begin{deluxetable*}{lcccccccccccc}
  \tablecaption{\label{table:masses}Inferred System Properties}
-  \tablehead{\colhead{{Source}} & \colhead{$M_\ast$} & \colhead{$i_d$} & \colhead{$r_c$} & \colhead{$r_\textrm{cav}$} & \colhead{$\log M_\textrm{CO}$} & \colhead{$T_{10}$} & \colhead{$q$} & \colhead{$\xi$} & \colhead{P.A.} &  \colhead{$d$} & \colhead{$M_\ast / d$} \\
-	& \colhead{[$M_\odot$]} & \colhead{[${}^\circ$]} & \colhead{[AU]} & \colhead{[AU]} & \colhead{[$M_\odot$]} & \colhead{[K]} & & \colhead{ [$\kms$]} & \colhead{[${}^\circ$]} & \colhead{[pc]} & \colhead{$[M_\odot / \textrm{pc}]$}}
+  \tablehead{\colhead{{Source}} & \colhead{$M_\ast$} & \colhead{$i_d$} & \colhead{$r_c$} & \colhead{$\log M_\textrm{CO}$} & \colhead{$T_{10}$} & \colhead{$q$} & \colhead{$\xi$} & \colhead{P.A.} &  \colhead{$d$} & \colhead{$M_\ast / d$} \\
+	& \colhead{[$M_\odot$]} & \colhead{[${}^\circ$]} & \colhead{[AU]} & \colhead{[$M_\odot$]} & \colhead{[K]} & & \colhead{ [$\kms$]} & \colhead{[${}^\circ$]} & \colhead{[pc]} & \colhead{$[M_\odot / \textrm{pc}]$}}
  \startdata
-LkH$\alpha$ 330 & \tablenotemark{a}  \\
-UX Tau A         &\\
-DM Tau          & \\
-AA Tau          & \\
-LkCa 15         & \\
-GM Aur          & \\
-MWC 480         & \\
-MWC 758         & \\
-CQ Tau          & \\
-TW Hya          & \\
-SAO 206462      & \\
-IM Lup          & \\
-HD 142527       & \\
-RX J1604 				& \\
-RX J1615 				& \\
-RX J1633 				& \\
-AS 209          & \\
-HD 163296       & \\
-HD 169142       & \\
+ LkH$\alpha$ 330 & \\
+ UX Tau A & \\
+ DM Tau & \\
+ AA Tau & \\
+ LkCa 15 & $1.11_{-0.18}^{+0.09}$ & $45.7_{-2.3}^{+1.1}$ & $470_{-131}^{+105}$ & $-3.9_{-0.2}^{+0.2}$ & $94_{-14}^{+6}$ & $0.57_{-0.04}^{+0.02}$ & $0.48_{-0.05}^{+0.02}$ & $153.2_{-1.0}^{+1.0}$ & $154_{-21}^{+15}$ & $7.11_{-0.38}^{+0.38}$ & \\
+ GM Aur & \\
+ MWC 480 & $2.14_{-0.51}^{+0.22}$ & $35.2_{-1.4}^{+0.4}$ & $136_{-21}^{+45}$ & $-3.7_{-0.1}^{+0.1}$ & $325_{-39}^{+29}$ & $0.75_{-0.01}^{+0.02}$ & $0.29_{-0.01}^{+0.01}$ & $58.4_{-0.2}^{+0.4}$ & $167_{-48}^{+8}$ & $13.41_{-0.45}^{+0.79}$ & \\
+ MWC 758 & \\
+ CQ Tau & \\
+ TW Hya & \\
+ SAO 206462 & \\
+ IM Lup & \\
+ HD 142527 & \\
+ RX J1604 & \\
+ RX J1615 & \\
+ RX J1633 & \\
+ AS 209 & \\
+ HD 163296 & \\
+ HD 169142 & \\
+% LkH$\alpha$ 330 & \tablenotemark{a}  \\
+% UX Tau A         &\\
+% DM Tau          & \\
+% AA Tau          & \\
+% LkCa 15         & \\
+% GM Aur          & \\
+% MWC 480         & \\
+% MWC 758         & \\
+% CQ Tau          & \\
+% TW Hya          & \\
+% SAO 206462      & \\
+% IM Lup          & \\
+% HD 142527       & \\
+% RX J1604 				& \\
+% RX J1615 				& \\
+% RX J1633 				& \\
+% AS 209          & \\
+% HD 163296       & \\
+% HD 169142       & \\
  \enddata
  \tablenotetext{a}{From lack of sufficient sensitivity in the channels at the systemic velocity or any external constraints, it is unknown whether the absolute orientation of the disk inclination vector is pointed towards ($0\degr \leq i_d \leq 90\degr$) or away from ($90\degr \leq i_d \leq 180\degr$) the observer.}
  \tablecomments{Full posterior and likelihood samples are provided for download \todo{at figshare HERE.}}
@@ -165,10 +185,55 @@ HD 169142       & \\
 \begin{center}
   \includegraphics[draft,width=0.95\textwidth,height=7in]{posterior_example.pdf}
   \figcaption{
-  A giant, 12 parameter figure showing the full parameter space. Explaining the various parameters and how they are connected.
+  A giant, 12 parameter figure showing the full parameter space. Explaining the various parameters and how they are connected. Note that a 13th parameter $M_\ast / d$ has been computed from the samples of $M_\ast$ and $d$ and is not sampled directly.
   \label{fig:posterior}}
   \end{center}
 \end{figure*}
+
+\begin{figure*}[htb]
+\begin{center}
+\includegraphics[draft, width=3.5in, height=2.15in]{LkHa330_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{UXTauA_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{DMTau_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{AATau_posterior.pdf}
+\includegraphics{LkCa15_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{GMAur_posterior.pdf}
+\includegraphics{MWC480_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{MWC758_posterior.pdf}
+\figcaption{All of the tiny posteriors.
+\label{fig:posteriors_one}
+}
+\end{center}
+\end{figure*}
+
+\begin{figure*}[htb]
+\begin{center}
+\includegraphics[draft, width=3.5in, height=2.15in]{CQTau_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{TWHya_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{SAO206462_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{IMLup_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{HD142527_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{RXJ1604_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{RXJ1615_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{RXJ1633_posterior.pdf}
+\figcaption{All of the tiny posteriors.
+\label{fig:posteriors_two}
+}
+\end{center}
+\end{figure*}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[draft, width=3.5in, height=2.15in]{AS209_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{HD163296_posterior.pdf}
+\includegraphics[draft, width=3.5in, height=2.15in]{HD169142_posterior.pdf}
+\figcaption{All of the tiny posteriors.
+\label{fig:posteriors_three}
+}
+\end{center}
+\end{figure}
+
+
 
 \section{Conclusions}
 
@@ -360,6 +425,8 @@ I convert this to 188.7 +/-
 \end{figure*}
 
 \subsection{HD 142527}
+
+% To watch out for? https://public.nrao.edu/news/pressreleases/binary-star-disk
 
 \begin{figure*}[htb]
 \begin{center}
