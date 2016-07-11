@@ -1,4 +1,5 @@
-\documentclass[twocolumn]{aastex6}
+% \documentclass[twocolumn]{aastex6}
+\documentclass{aastex6}
 
 \newcommand{\radmc}{\texttt{RADMC-3D}}
 \newcommand{\kms}{ \textrm{km s}^{-1} }
@@ -67,7 +68,7 @@ HD 142527       & 15:56:41.89 & -42:19:23.3 & F2--G0 & & & $145 \pm 20$ & \citet
 RX J1604.3-2130 & 16:04:21.66 & -21:30:28.4 & K0--K3 & & & $145 \pm 2$  & \citet{dezeeuw99} \\
 RX J1615.3-3255 & 16:15:20.23 & -32:55:05.1 & K4--K7 & & 3-2 & $185 \pm 25$ & \citet{makarov07} \\
 RX J1633.9-2442 & 16:33:55.61 & -24:42:05.0 & K5--M0 & & & $120 \pm 5$ & \citet{loinard08} \\
-AS 209          & 16:49:15.30 & -14:22:08.6 & K3--K6 & & & $130 \pm 50$ & \citet{vanleeuwen07} \\
+AS 209          & 16:49:15.30 & -14:22:08.6 & K3--K6 & & 3-2 & $130 \pm 50$ & \citet{vanleeuwen07} \\
 HD 163296       & 17:56:21.29 & -21:57:21.9 & A0--A4 & & & $119 \pm 11$ & \citet{vanleeuwen07} \\
 HD 169142       & 18:24:29.78 & -29:46:49.4 & B8--A2 & & 2-1 & $145\pm 43$ & \citet{vanboekel05}\\
  \enddata
@@ -85,6 +86,12 @@ HD 169142       & 18:24:29.78 & -29:46:49.4 & B8--A2 & & 2-1 & $145\pm 43$ & \ci
 % Explain how we forward model the visibilities.
 
 % First, the goal is to create a model of the sky brightness using a physical model of the disk.
+
+Given the diversity of disk structures, we employ several different models for the disk structure.
+
+\subsection{Standard model}
+
+
 First, create a 2D-axisymmetric model of the disk structure and velocity field, the disk model is specified in cylindrical coordinates. This is informed by stellar mass $M_\ast$, a power law temperature distribution with normalization at 10 AU $T_{10}$ and gradient $q$.
 
 Vertically isothermal disk.
@@ -95,7 +102,7 @@ Vertically isothermal disk.
 
 \citet{rosenfeld13a} have shown that terms like vertical geometry, disk-self gravity, and radial pressure gradient amount to small contributions on the mass inference.
 
-Surface density profile, set with $\gamma = 1$. Normalized by $M_\textrm{disk}$.
+Surface density profile, set with $\gamma = 1$. The normalization of this profile is given by the pre-factor $\Sigma_c$, and the total disk mass ($M_\textrm{disk}$) can be found by integrating $\Sigma(r)$ over the surface area of the disk.
 
 \begin{equation}
 \Sigma(r) = \Sigma_c \left (\frac{r}{r_c} \right)^{- \gamma} \exp \left[ - \left(\frac{r}{r_c} \right)^{2 - \gamma} \right]
@@ -108,6 +115,23 @@ The disk is assumed to be in hydrostatic equilibrium, and so the gas density str
 
 where the scale height $H$ is given by
 
+\subsection{Cavity model}
+
+With respect to the standard model, the cavity model is modified by an inner exponential taper, with location $r_\textrm{cav}$ and gradient $\gamma_c$
+
+\begin{equation}
+\Sigma(r) = \Sigma_c \left (\frac{r}{r_c} \right)^{- \gamma} \exp \left [- \left ( \frac{r_\textrm{cav}}{r} \right)^{\gamma_c} \right ]  \exp \left[ - \left(\frac{r}{r_c} \right)^{2 - \gamma} \right]
+\end{equation}
+
+We elect to use a model with a smooth transition over more conventional models of gas cavities, such as a simple depletion factor inside some radius) because of the finite grid used to do the radiative transfer. It is necessary to ``resolve'' the transition in the radiative transfer to reduce the entrance of numerical artifacts, and this is impossible to do with a model with a sharp transition.
+
+We set a prior that $r_\textrm{cav} \leq r_c$ and $\gamma_c \geq 0$.
+
+\subsection{Vertical temperature gradient model}
+
+Here, we relax the assumption of a vertically isothermal disk, and instead adopt a more sophisticated parameterization that permits $T(r,z)$. This structure originally detailed by CITE Dartois 03, and used by Rosenfeld13, Williams and Best 14.
+
+The disk midplane temperature and atmosphere temperature are described by two power laws, with a smooth transition between them. Parameters describe the shape of this transition.
 
 Then, this structure is ray-traced using the radiative transfer program \texttt{RADMC-3D}, whereby disk orientation effects such as disk inclination $i_d$ and position angle $\varphi$ are taken into account. Disk inclination is defined using the orientation of the disk angular momentum vector from the line of sight to the observer. 0\degr is a face-on disk with the vector pointed towards the observer, 90\degr is an edge-on disk, and 180\degr is a face-on disk with the vector pointed away from the observer. We enforce a geometrical prior on the inclination of the disk, $p(i_d) =  \sin(i_d)/2$, designed to account for the fact that a disk is more likely to be observed edge-on than face-on.
 
@@ -120,10 +144,9 @@ The angular scale of the disk are set according to the distance $d$ to the sourc
 
 Inclination convention. Position angle convention. Notes on geometrical prior.
 
-We use an isothermal disk structure model, with an inner cavity that allows for depletion. And a floating inner radius.
-
-
 Explore this posterior with MCMC on a cluster. After running multiple chains to asses convergence, burn-in is removed and posteriors are calculated. A full example of the 12-dimensional posterior is shown in Figure~\ref{fig:posterior}.
+
+The sources are fit with a fixed distance. Including distance floating \citep[e.g.,][]{czekala15a,czekala16} simply creates a linear mass degeneracy, with minor changes to disk size and mass. This posterior is folded in to the mass uncertainty in a linear manner.
 
 \footnote{We have released this dynamical mass code as a publicly available, open-source (under an MIT liscence) package written in the \texttt{Julia} language, available at \url{https://github.com/iancze/DiskJockey}}
 
@@ -131,20 +154,64 @@ Explore this posterior with MCMC on a cluster. After running multiple chains to 
 
 We present our results in Table~\ref{table:masses}.
 
+We present a table of the model parameters shared by each model, and list the evaluations done by each model in the table. As you can see, there are minimal changes in stellar mass.
+
+Note that because the disk structures are derived from optically thick transitions, we caution about the interpretability of the disk structure itself, particularly inference about the total disk mass. Previous fits using these transitions have been shown to yield accurate stellar masses, and $M_\ast$ in generally is rather insensitive to small inaccuracies in disk structure. In essentially, these disk structure parameters are carted around as nuisance parameters to fit the disk.
+
 % I think an interesting figure for this section would be to plot a representative set of PMS tracks (Dartmouth), then plot the existing disk-based sources in transparent blue, plot the existing eclipsing binary sources in transparent red, then plot our updated disk based measurements in a bold blue. Below, we will have a histogram showing where these have been filled in.
+
+% Stars that are in Tycho-2 catalog, and will presumably have astrometric solutions from the first GAIA release, on September 14th.
+% LkHa 330
+% UX Tau A
+% LkCa 15
+% GM Aur
+% MWC 480
+% MWC 758
+% CQ Tau
+% TW Hya
+% SAO 206462
+% HD 142527
+% AS 209
+% HD 163296
+% HD 169142
+% that's 13 / 19 sources, which is excellent.
+
+% Data Provenance
+% (target, original PI, original project):
+% me = Sean
+%
+% LkHa 330, me, Andrews et al. 2011
+% UX Tau A, me, Andrews et al. 2011
+% DM Tau, Karin, Oberg et al. 2010
+% AA Tau, me, Andrews & Williams 2007
+% LkCa 15, me, Andrews et al. 2011
+% GM Aur, me, Hughes et al. 2009
+% MWC 480, Karin, Oberg et al. 2010
+% MWC 758, Andrea Isella, Isella et al. 2010
+% CQ Tau, Karin, Oberg et al. 2010
+% TW Hya, me, Andrews et al. 2012
+% SAO 206462, Charlie, Lyo et al. 2011
+% IM Lup, me, unpublished
+% HD 142527 (not sure we'll end up using...data rough)
+% RX J1604, Jonathan Williams, Mathews et al. 2012
+% RX J1615, me, Andrews et al. 2011
+% RX J1633, Lucas Cieza, Cieza et al. 2012 (I need to look at these data still...unsure of quality)
+% AS 209, me, Andrews et al. 2009
+% HD 163296, Charlie, Qi et al. 2011
+% HD 169142, David, Raman et al. 2008?
 
 \begin{deluxetable*}{lcccccccccccc}
  \tablecaption{\label{table:masses}Inferred System Properties}
-  \tablehead{\colhead{{Source}} & \colhead{$M_\ast$} & \colhead{$i_d$} & \colhead{$r_c$} & \colhead{$\log M_\textrm{CO}$} & \colhead{$T_{10}$} & \colhead{$q$} & \colhead{$\xi$} & \colhead{P.A.} &  \colhead{$d$} & \colhead{$M_\ast / d$} \\
-	& \colhead{[$M_\odot$]} & \colhead{[${}^\circ$]} & \colhead{[AU]} & \colhead{[$M_\odot$]} & \colhead{[K]} & & \colhead{ [$\kms$]} & \colhead{[${}^\circ$]} & \colhead{[pc]} & \colhead{$[M_\odot / \textrm{pc}]$}}
+  \tablehead{\colhead{{Source}} & \colhead{$M_\ast$} & \colhead{$i_d$} & \colhead{$r_c$} & \colhead{$\log M_\textrm{CO}$} & \colhead{$T_{10}$} & \colhead{$q$} & \colhead{$\xi$} & \colhead{P.A.} & \colhead{$r_\mathrm{cav}$} & \colhead{$\gamma_\mathrm{cav}$} \\
+	& \colhead{[$M_\odot$]} & \colhead{[${}^\circ$]} & \colhead{[AU]} & \colhead{[$M_\odot$]} & \colhead{[K]} & & \colhead{ [$\kms$]} & \colhead{[${}^\circ$]} & \colhead{[AU]} & }
  \startdata
  LkH$\alpha$ 330 & \\
  UX Tau A & \\
  DM Tau & \\
  AA Tau & \\
- LkCa 15 & $1.11_{-0.18}^{+0.09}$ & $45.7_{-2.3}^{+1.1}$ & $470_{-131}^{+105}$ & $-3.9_{-0.2}^{+0.2}$ & $94_{-14}^{+6}$ & $0.57_{-0.04}^{+0.02}$ & $0.48_{-0.05}^{+0.02}$ & $153.2_{-1.0}^{+1.0}$ & $154_{-21}^{+15}$ & $7.11_{-0.38}^{+0.38}$ & \\
+ LkCa 15 & $1.11_{-0.18}^{+0.09}$ & $45.7_{-2.3}^{+1.1}$ & $470_{-131}^{+105}$ & $-3.9_{-0.2}^{+0.2}$ & $94_{-14}^{+6}$ & $0.57_{-0.04}^{+0.02}$ & $0.48_{-0.05}^{+0.02}$ & $153.2_{-1.0}^{+1.0}$  \\
  GM Aur & \\
- MWC 480 & $2.14_{-0.51}^{+0.22}$ & $35.2_{-1.4}^{+0.4}$ & $136_{-21}^{+45}$ & $-3.7_{-0.1}^{+0.1}$ & $325_{-39}^{+29}$ & $0.75_{-0.01}^{+0.02}$ & $0.29_{-0.01}^{+0.01}$ & $58.4_{-0.2}^{+0.4}$ & $167_{-48}^{+8}$ & $13.41_{-0.45}^{+0.79}$ & \\
+ MWC 480 & $2.14_{-0.51}^{+0.22}$ & $35.2_{-1.4}^{+0.4}$ & $136_{-21}^{+45}$ & $-3.7_{-0.1}^{+0.1}$ & $325_{-39}^{+29}$ & $0.75_{-0.01}^{+0.02}$ & $0.29_{-0.01}^{+0.01}$ & $58.4_{-0.2}^{+0.4}$ \\
  MWC 758 & \\
  CQ Tau & \\
  TW Hya & \\
@@ -192,14 +259,15 @@ We present our results in Table~\ref{table:masses}.
 
 \begin{figure*}[htb]
 \begin{center}
-\includegraphics[draft, width=3.5in, height=2.15in]{LkHa330_posterior.pdf}
-\includegraphics[draft, width=3.5in, height=2.15in]{UXTauA_posterior.pdf}
-\includegraphics[draft, width=3.5in, height=2.15in]{DMTau_posterior.pdf}
-\includegraphics[draft, width=3.5in, height=2.15in]{AATau_posterior.pdf}
+\includegraphics[draft, width=2.3in, height=2.15in]{LkHa330_posterior.pdf}
+\includegraphics{UXTauA_posterior.pdf}
+\includegraphics{DMTau_posterior.pdf}
+\includegraphics[draft, width=2.3in, height=2.15in]{AATau_posterior.pdf}
 \includegraphics{LkCa15_posterior.pdf}
-\includegraphics[draft, width=3.5in, height=2.15in]{GMAur_posterior.pdf}
+\includegraphics{GMAur_posterior.pdf}
 \includegraphics{MWC480_posterior.pdf}
 \includegraphics{MWC758_posterior.pdf}
+\includegraphics[draft, width=2.3in, height=2.15in]{CQTau_posterior.pdf}
 \figcaption{All of the tiny posteriors.
 \label{fig:posteriors_one}
 }
@@ -208,14 +276,15 @@ We present our results in Table~\ref{table:masses}.
 
 \begin{figure*}[htb]
 \begin{center}
-\includegraphics[draft, width=3.5in, height=2.15in]{CQTau_posterior.pdf}
-\includegraphics[draft, width=3.5in, height=2.15in]{TWHya_posterior.pdf}
-\includegraphics[draft, width=3.5in, height=2.15in]{SAO206462_posterior.pdf}
+\includegraphics[draft, width=2.3in, height=2.15in]{TWHya_posterior.pdf}
+\includegraphics[draft, width=2.3in, height=2.15in]{SAO206462_posterior.pdf}
 \includegraphics{IMLup_posterior.pdf}
-\includegraphics[draft, width=3.5in, height=2.15in]{HD142527_posterior.pdf}
-\includegraphics[draft, width=3.5in, height=2.15in]{RXJ1604_posterior.pdf}
+\includegraphics[draft, width=2.3in, height=2.15in]{HD142527_posterior.pdf}
+\includegraphics[draft, width=2.3in, height=2.15in]{RXJ1604_posterior.pdf}
 \includegraphics{RXJ1615_posterior.pdf}
-\includegraphics[draft, width=3.5in, height=2.15in]{RXJ1633_posterior.pdf}
+\includegraphics[draft, width=2.3in, height=2.15in]{RXJ1633_posterior.pdf}
+\includegraphics[draft, width=2.3in, height=2.15in]{AS209_posterior.pdf}
+\includegraphics[draft, width=2.3in, height=2.15in]{HD163296_posterior.pdf}
 \figcaption{All of the tiny posteriors.
 \label{fig:posteriors_two}
 }
@@ -224,8 +293,6 @@ We present our results in Table~\ref{table:masses}.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[draft, width=3.5in, height=2.15in]{AS209_posterior.pdf}
-\includegraphics[draft, width=3.5in, height=2.15in]{HD163296_posterior.pdf}
 \includegraphics{HD169142_posterior.pdf}
 \figcaption{All of the tiny posteriors.
 \label{fig:posteriors_three}
@@ -233,6 +300,18 @@ We present our results in Table~\ref{table:masses}.
 \end{center}
 \end{figure}
 
+\subsection{Comparison to pre-main sequence evolutionary models}
+
+We use literature values for the estimate of spectral type, effective temperature, and luminosity to place these sources on the pre-main sequence Hertzsprung Russel sp? (HR) diagram. We use a selection of pre-main sequence models from the X, Y, and Z. And we color-code the discrepancy between our measurement and the predicted mass from the photospheric properties.
+
+\begin{figure*}[htb]
+\begin{center}
+  \includegraphics[draft,width=\textwidth,height=0.5\textheight]{PMS.pdf}
+  \figcaption{
+  PMS comparison HR diagram, showing probability of agreement as color coded circle.
+  \label{fig:PMS}}
+  \end{center}
+\end{figure*}
 
 
 \section{Conclusions}
@@ -242,7 +321,9 @@ We present the largest compilation of disk-based dynamical mass measurements to 
 We find that the pre-main sequence models (do not) work for X, Y, and Z.
 
 \acknowledgments
-IC is supported by the Smithsonian Institution. The authors would like to acknowledge Adam Kraus for helpful discussions regarding the distance to LkH$\alpha$~330. \todo{SA acknowledges XX}. \todo{SMA observers of this data?}  Figures \todo{XX} were generated with \texttt{triangle.py} \citep{foreman-mackey14}. This research made extensive use of the Julia programming language \citep{julia12} and Astropy \citep{astropy13}.
+IC is supported by the Smithsonian Institution. The authors would like to acknowledge Adam Kraus for helpful discussions regarding the distance to LkH$\alpha$~330; Jane Huang for helpful conversations about the cloud contamination of AS~209. \todo{SA acknowledges XX}. \todo{SMA observers of this data?}  Figures \todo{XX} were generated with \texttt{triangle.py} \citep{foreman-mackey14}. This research made extensive use of the Julia programming language \citep{julia12} and Astropy \citep{astropy13}.
+
+\software{Julia, \citep{julia12}}
 
 \bibliographystyle{yahapj.bst}
 \bibliography{master.bib}
@@ -300,6 +381,8 @@ Although it looks good in the channel maps, this fit is clearly wrong. The disk 
 
 \subsection{DM Tau}
 Previous measurements.
+
+Dartois 03 paper CO channel maps (at higher spatial and velocity resolution) suggest that the inclination is > 90 degrees. Subsequent analysis (Teague, Loomis) assume ~35 degrees inclination and make no attempt to disambiguate absolute orientation of inclination.
 
 \begin{figure*}[htb]
 \begin{center}
@@ -428,6 +511,10 @@ I convert this to 188.7 +/-
 
 % To watch out for? https://public.nrao.edu/news/pressreleases/binary-star-disk
 
+% M dwarf star is in the transition disk: \url{http://arxiv.org/abs/1511.09390}
+
+% Model the Hercshel data. http://arxiv.org/abs/1606.07266
+
 \begin{figure*}[htb]
 \begin{center}
   \includegraphics[draft, width=0.95\textwidth, height=5in]{HD142527.pdf}
@@ -441,7 +528,7 @@ I convert this to 188.7 +/-
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft, width=0.95\textwidth, height=5in]{RXJ1604.pdf}
+  \includegraphics{RXJ1604.pdf}
   \figcaption{
   Same as above, for RX J1604.3-2130.
   \label{fig:RXJ1604}}
@@ -459,6 +546,8 @@ d = 145 pc
 Dust shadowing by an inner disk. A ``double drop'' going on at two radii.
 
 Gas density drop at 30 AU.
+
+% VLT/Sphere Also see a 30 AU cavity. http://arxiv.org/abs/1606.07087
 
 \subsection{RX J1615.3-3255}
 \begin{figure*}[htb]
@@ -511,6 +600,8 @@ d = 185 pc.
   \end{center}
 \end{figure*}
 
+Mask central channels due to cloud contamination.
+
 \subsection{HD 163296}
 
 \begin{figure*}[htb]
@@ -532,6 +623,8 @@ d = 185 pc.
   \label{fig:HD169142}}
   \end{center}
 \end{figure*}
+
+Fit with both standard and cavity models.
 
 Appears to be a definite inner cavity in the gas.
 
