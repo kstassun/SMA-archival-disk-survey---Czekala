@@ -42,11 +42,9 @@ We now have a technique available that delivers accurate masses \citep{rosenfeld
 
 \section{Data and Reduction}
 
-SMA programs from which all the data was taken.
+Calibration. MIRIAD software. Visibilities were exported from UVFITS to UVHDF5\footnote{See \url{https://github.com/Astrochem/UVHDF5}} format.
 
-Calibration. MIRIAD software. Visibilities were exported and modeled in the UV plane.
-
-Sources are listed in Table~\ref{table:targets}.
+The data for most of the sources in this program have been previously published. For references, see Table~\ref{table:targets}.
 
 \begin{deluxetable*}{lccccccc}
  \tablecaption{\label{table:targets}Targets}
@@ -77,72 +75,65 @@ HD 169142       & 18:24:29.78 & -29:46:49.4 & B8--A2 & 2-1 & $145$ & ,8,20 \\% v
 
 \section{Methodology}
 
-% Interferometers sample the Fourier transform of the sky brightness of the source. By forward modeling this kinematic fingerprint, we can infer parameters of the disk and precisely constrain the central stellar mass.
+\subsection{Millimeter Interferometry}
 
-% Kinematic fingerprint of a molecular transition like carbon monoxide (12CO). Line transfers like CO 2-1 and 3-2, though in practice this technique is broadly applicable to a range of molecules, isotopologues, and transitions, as long as these are bright enough and distant enough in the disk to be spatially resolved.
+Interferometers sample the Fourier transform of the sky brightness of an astrophysical source and record these measurements as complex-valued data visibilities. By forward modeling these visibilities, we can use a well-motivated likelihood function, coupled with physical prior distributions, to evaluate the posterior probability of our model parameters as well as understand the uncertainties in our inference.
 
-% We use the dynamical mass technique described in \citet{czekala15a}.
-
-% Explain how we forward model the visibilities.
-
-% First, the goal is to create a model of the sky brightness using a physical model of the disk.
-
-Given the diversity of disk structures, we employ several different models for the disk structure.
-
-\subsection{Standard model}
-
-
-First, create a 2D-axisymmetric model of the disk structure and velocity field, the disk model is specified in cylindrical coordinates. This is informed by stellar mass $M_\ast$, a power law temperature distribution with normalization at 10 AU $T_{10}$ and gradient $q$.
-
-Vertically isothermal disk.
-
+The first step in this modeling procedure is to create a model of the disk molecular line emission in the sky plane. This involves parametrically defining a 2D-axisymmetric model of the gas disk structure and velocity field in cylindrical coordinates. Since we fit the visibility data after they have been dust continuum-subtracted, we do not consider dust emission in this model. The gas is assumed to orbit in the disk in circular Keplerian orbits, with only an azimuthal component of velocity that is a function of the central stellar mass, $M_\ast$
+\begin{equation}
+	v_\phi(r) = \sqrt{\frac{G M_\ast}{r}}
+\end{equation}
+The temperature of the gas is defined parametrically by a power-law profile with a normalization at 10 AU $T_{10}$ and gradient $q$, and the gas is assumed to be vertically isothermal
 \begin{equation}
 	T(r) = T_{10} \left ( \frac{r}{\textrm{10 AU}}\right)^{-q}
 \end{equation}
-
-\citet{rosenfeld13a} have shown that terms like vertical geometry, disk-self gravity, and radial pressure gradient amount to small contributions on the mass inference.
-
-Surface density profile, set with $\gamma = 1$. The normalization of this profile is given by the pre-factor $\Sigma_c$, and the total disk mass ($M_\textrm{disk}$) can be found by integrating $\Sigma(r)$ over the surface area of the disk.
-
+We assume that the standard \citet{lynden-bell74} similarity solution describes the surface density profile,
 \begin{equation}
 \Sigma(r) = \Sigma_c \left (\frac{r}{r_c} \right)^{- \gamma} \exp \left[ - \left(\frac{r}{r_c} \right)^{2 - \gamma} \right]
 \end{equation}
-
-The disk is assumed to be in hydrostatic equilibrium, and so the gas density structure is given by
-\begin{equation}
-\rho(r, z) = \frac{\Sigma(r)}{\sqrt{2 \pi} H} \exp \left [- \frac{z^2}{2 H^2} \right]
-\end{equation}
-
-where the scale height $H$ is given by
-
-\subsection{Cavity model}
-
-With respect to the standard model, the cavity model is modified by an inner exponential taper, with location $r_\textrm{cav}$ and gradient $\gamma_c$
-
+ where the critical radius $r_c$ denotes the transition from a power law to exponential taper and the pre-factor $\Sigma_c$ normalizes the profile. The total disk mass ($M_\textrm{disk}$) can be found by integrating $\Sigma(r)$ over the surface area of the disk. We proceed with fixed $\gamma = 1$ and term this the ``standard'' surface density profile for later discussion. Some of the disks in our sample exhibit large gas density depletions in a central cavity near the star. To more accurately model these disks, we alternatively employ a ``cavity'' model which has two additional parameters $r_\mathrm{cav}$ and $\gamma_c$
 \begin{equation}
 \Sigma(r) = \Sigma_c \left (\frac{r}{r_c} \right)^{- \gamma} \exp \left [- \left ( \frac{r_\mathrm{cav}}{r} \right)^{\gamma_c} \right ]  \exp \left[ - \left(\frac{r}{r_c} \right)^{2 - \gamma} \right]
 \end{equation}
+which parameterize an inner cavity with variable size and steepness of decay.
 
-We elect to use a model with a smooth transition over more conventional models of gas cavities, such as a simple depletion factor inside some radius) because of the finite grid used to do the radiative transfer. It is necessary to ``resolve'' the transition in the radiative transfer to reduce the entrance of numerical artifacts, and this is impossible to do with a model with a sharp transition.
+% We elect to use a model with a smooth exponential transition rather than more conventional cavity models (such as a simple depletion factor inside some radius) because of the finite grid used to do the radiative transfer. It is necessary to ``resolve'' the transition in the radiative transfer to reduce the entrance of numerical artifacts, and this is impossible to do with a model with a sharp transition.
+The disk is assumed to be in hydrostatic equilibrium, yielding a vertical gas density structure given by
+\begin{equation}
+\rho(r, z) = \frac{\Sigma(r)}{\sqrt{2 \pi} H} \exp \left [- \frac{z^2}{2 H^2} \right]
+\end{equation}
+where the scale height $H$ is given by
+\begin{equation}
+	H(r) = \frac{c_s}{\Omega} = \left (\frac{k_\mathrm{B} T}{\mu m_\mathrm{H}} \cdot \frac{r^3}{G M_\ast} \right)
+\end{equation}
+where $c_s$ is the sound speed, $\Omega$ is the angular velocity, $k_\mathrm{B}$ is the Boltzmann constant, $\mu$ is the gas mean molecular weight, and $m_\mathrm{H}$ is the mass of a Hydrogen atom.
 
-We set a prior that $r_\textrm{cav} \leq r_c$ and $\gamma_c \geq 0$.
+This structure is then ray-traced using the radiative transfer program \texttt{RADMC-3D} in order to produce channel maps. At this stage, the inclination ($i$) and position angle ($\varphi$) of the disk are taken into account. Inclination is defined using the angle between the disk angular momentum vector to the observer line of sight: 0\degr is a face-on disk with the vector pointed towards the observer, 90\degr is an edge-on disk, and 180\degr is a face-on disk with the vector pointed away from the observer. Similarly, position angle is defined using the projection of the disk angular momentum vector on the plane of the sky, in degrees running East of North (counter clockwise on the sky). Using an assumed fixed distance to the source, we then scale these channel maps to the appropriate size and intensity. Systematic uncertainty in the distance to the source translates linearly into uncertainty in the stellar mass.
 
-Then, this structure is ray-traced using the radiative transfer program \texttt{RADMC-3D}, whereby disk orientation effects such as disk inclination $i_d$ and position angle $\varphi$ are taken into account. Disk inclination is defined using the orientation of the disk angular momentum vector from the line of sight to the observer. 0\degr is a face-on disk with the vector pointed towards the observer, 90\degr is an edge-on disk, and 180\degr is a face-on disk with the vector pointed away from the observer. We enforce a geometrical prior on the inclination of the disk, $p(i_d) =  \sin(i_d)/2$, designed to account for the fact that a disk is more likely to be observed edge-on than face-on.
+Next, the channel maps are Fourier transformed using \texttt{FFTW} \citep{fftw} and then sampled at the same $u, v$ coordinates corresponding to the antenna baselines of the observations. This process is carried out in a band-limited manner that respects the gridding convolution functions \citep{schwab84}. At this point, the visibilities are also multiplied by a phase-center offset corresponding to a position-offset in the image plane, with parameters $\mu_\alpha$ and $\mu_\delta$.
 
-Likewise, position angle is defined using the projection of the disk angular momentum vector on the plane of the sky, in degrees running East of North (counter clockwise on the sky).
-
-The angular scale of the disk are set according to the distance $d$ to the source, which generally factors into a linear dependence on the mass uncertainty. Stellar mass is generally uncorrelated with other parameters. With corrections for phase center offsets $\mu_\alpha$ and $\mu_\delta$.
+This model describes a kinematic fingerprint, we can infer parameters of the disk and precisely constrain the central stellar mass. \citet{rosenfeld13a} have shown that terms like vertical geometry, disk-self gravity, and radial pressure gradient amount to small contributions on the mass inference.
 
 
-% Two dimensional, axi-symmetric convention.
+% We use the dynamical mass technique described in \citet{czekala15a}.
 
-Inclination convention. Position angle convention. Notes on geometrical prior.
+
+
+
+
+\subsection{Priors}
+
+We enforce a geometrical prior on the inclination of the disk, $p(i_d) =  \sin(i_d)/2$, designed to account for the fact that a disk is more likely to be observed edge-on than face-on. For the cavity model, we set a prior that $r_\textrm{cav} \leq r_c$ and $\gamma_c \geq 0$.
+
+
+
 
 Explore this posterior with MCMC on a cluster. After running multiple chains to asses convergence, burn-in is removed and posteriors are calculated. A full example of the 12-dimensional posterior is shown in Figure~\ref{fig:posterior}.
 
-The sources are fit with a fixed distance. Including distance floating \citep[e.g.,][]{czekala15a,czekala16} simply creates a linear mass degeneracy, with minor changes to disk size and mass. This posterior is folded in to the mass uncertainty in a linear manner.
 
 \footnote{We have released this dynamical mass code as a publicly available, open-source (under an MIT liscence) package written in the \texttt{Julia} language, available at \url{https://github.com/iancze/DiskJockey}}
+
+\subsection{Photospheric Stellar Fitting}
 
 \section{Results}
 
@@ -169,30 +160,6 @@ Note that because the disk structures are derived from optically thick transitio
 % HD 163296
 % HD 169142
 % that's 13 / 19 sources, which is excellent.
-
-% Data Provenance
-% (target, original PI, original project):
-% me = Sean
-%
-% LkHa 330, me, Andrews et al. 2011
-% UX Tau A, me, Andrews et al. 2011
-% DM Tau, Karin, Oberg et al. 2010
-% AA Tau, me, Andrews & Williams 2007
-% LkCa 15, me, Andrews et al. 2011
-% GM Aur, me, Hughes et al. 2009
-% MWC 480, Karin, Oberg et al. 2010
-% MWC 758, Andrea Isella, Isella et al. 2010
-% CQ Tau, Karin, Oberg et al. 2010
-% TW Hya, me, Andrews et al. 2012
-% SAO 206462, Charlie, Lyo et al. 2011
-% IM Lup, me, unpublished
-% HD 142527 (not sure we'll end up using...data rough)
-% RX J1604, Jonathan Williams, Mathews et al. 2012
-% RX J1615, me, Andrews et al. 2011
-% RX J1633, Lucas Cieza, Cieza et al. 2012 (I need to look at these data still...unsure of quality)
-% AS 209, me, Andrews et al. 2009
-% HD 163296, Charlie, Qi et al. 2011
-% HD 169142, David, Raman et al. 2008?
 
 \begin{deluxetable*}{lcccccccccccc}
  \tablecaption{\label{table:masses}Inferred System Properties}
@@ -244,9 +211,9 @@ Note that because the disk structures are derived from optically thick transitio
 
 \begin{figure*}[htb]
 \begin{center}
-  \includegraphics[draft,width=0.95\textwidth,height=7in]{posterior_example.pdf}
+  \includegraphics{triangle.pdf}
   \figcaption{
-  A giant, 12 parameter figure showing the full parameter space. Explaining the various parameters and how they are connected. Note that a 13th parameter $M_\ast / d$ has been computed from the samples of $M_\ast$ and $d$ and is not sampled directly.
+  A giant, 11 parameter figure showing the full parameter space. Explaining the various parameters and how they are connected.
   \label{fig:posterior}}
   \end{center}
 \end{figure*}
